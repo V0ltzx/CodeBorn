@@ -1,4 +1,7 @@
+using System;
+using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -6,13 +9,17 @@ public class PlayerController : MonoBehaviour
     public float speed = 0.1f;
     // Criação de uma input action que tem como tipo (definido no editor) como value, tendo maior flexibilidade
     public InputAction MoveAction;
+    public InputAction Attack;
+    public Animator anim;
     Rigidbody2D rb;
     Vector2 move;
+    public GameObject attackPrefab;
 
     //a variavel health é uma propriedade que retorna o valor de currentHealth, assim permitindo o acesso ao valor do currentHealth sem a possibilidade de alterá-lo diretamente
     public int health { get { return currentHealth; } }
     public int maxHealth = 5;
     int currentHealth;
+    int FacingDirection = 1; // O personagem inicialmente está virado para a direita
 
     // Variables related to temporary invincibility
     public float timeInvincible = 1.0f;
@@ -27,11 +34,12 @@ public class PlayerController : MonoBehaviour
     {
         // ativando a ação de movimento, que foi definida no editor do Unity
         MoveAction.Enable();
+        Attack.Enable();
         rb = GetComponent<Rigidbody2D>();
 
         currentHealth = maxHealth;
 
-   
+
 
         //QualitySettings.vSyncCount = 0;
         //Application.targetFrameRate = 10;
@@ -69,6 +77,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if(Attack.triggered)
+        {
+            Swing(); // Chama a função Swing quando o botão de ataque é pressionado
+        }
     }
 
     void FixedUpdate()
@@ -76,6 +88,28 @@ public class PlayerController : MonoBehaviour
         // Aplicando a velocidade do movimento no Rigidbody2D do objeto, assim permitindo um resposta maior do sistema de calculo de fisica, multiplicando pelo deltaTime para manter a velocidade constante
         Vector2 position = (Vector2)rb.position + move * speed * Time.deltaTime;
         rb.MovePosition(position);
+
+        // Estou colocando os valores de x e y nas variavéis de condição do Animator,
+        // o move.x/y usa o operador de ponto para pegar as partes especficas da variável position que é um Vector2, possuindo tanto x e y simultaneamente que esta recebendo do MoveAction
+        // Mathf.Abs é usado para pegar o valor absoluto do movimento
+        anim.SetFloat("horizontal", Mathf.Abs(move.x));
+        anim.SetFloat("vertical", Mathf.Abs(move.y));
+
+        // Verifica se o personagem esta virado para o lado contrário do movimento e então chama a função Flip que altera a escala do personagem para inverter a direção
+        if (move.x > 0 && transform.localScale.x < 0 || move.x < 0 && transform.localScale.x > 0)
+        {
+            Flip();
+        }
+
+
+    }
+
+    void Flip()
+    {
+        FacingDirection *= -1; // Inverte a direção de face do personagem
+
+        // O componente localscale n pode ser alterado individualmente, por isso mudamos oq nos queremos e mantemos o resto do scale do personagem
+        transform.localScale = new Vector3(FacingDirection, transform.localScale.y, transform.localScale.z); // Altera a escala do personagem para inverter a direção
     }
 
     public void ChangeHealth(int amount)
@@ -90,6 +124,8 @@ public class PlayerController : MonoBehaviour
             // caso IsInvincible seja falso, seta ele para verdadeiro e reseta o cooldown de dano
             isInvincible = true;
             damageCooldown = timeInvincible;
+            // Parametros de trigger para o animador, aqui ele considera que o personagem tomou dano e vai executar a animação relacionada ao trigger Hit'
+            anim.SetTrigger("Hit");
         }
 
         if (amount > 0)
@@ -108,8 +144,16 @@ public class PlayerController : MonoBehaviour
         // o segundo valor é o valor mínimo (0) e o terceiro é o valor máximo (maxHealth)
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
 
-        Debug.Log(currentHealth + "/" + maxHealth);
-
+        UIHandler.instance.SetHealthValue(currentHealth / (float)maxHealth);
         
+
+    }
+
+    void Swing()
+    {
+        Vector2 hitbox = transform.position;
+        Vector2 spawnOffset = new Vector2(FacingDirection * 0.6f, 0f); // 0.6 unidades à frente na direção do player
+        GameObject projectileObject = Instantiate(attackPrefab, hitbox + spawnOffset, Quaternion.identity);
+        anim.SetTrigger("Attack");
     }
 }
