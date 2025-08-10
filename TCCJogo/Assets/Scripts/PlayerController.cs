@@ -1,3 +1,4 @@
+using System;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -71,7 +72,7 @@ public class PlayerController : MonoBehaviour
                 isInvincibleHeal = false;
             }
         }
-
+      
     }
 
     void FixedUpdate()
@@ -133,8 +134,8 @@ public class PlayerController : MonoBehaviour
         // o segundo valor é o valor mínimo (0) e o terceiro é o valor máximo (maxHealth)
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
 
-        Debug.Log(currentHealth + "/" + maxHealth);
+        UIHandler.instance.SetHealthValue(currentHealth / (float)maxHealth);
 
-        
+
     }
 }
