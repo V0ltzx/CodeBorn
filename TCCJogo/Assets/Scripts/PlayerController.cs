@@ -1,6 +1,7 @@
 using System;
 using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -8,9 +9,11 @@ public class PlayerController : MonoBehaviour
     public float speed = 0.1f;
     // Criação de uma input action que tem como tipo (definido no editor) como value, tendo maior flexibilidade
     public InputAction MoveAction;
+    public InputAction Attack;
     public Animator anim;
     Rigidbody2D rb;
     Vector2 move;
+    public GameObject attackPrefab;
 
     //a variavel health é uma propriedade que retorna o valor de currentHealth, assim permitindo o acesso ao valor do currentHealth sem a possibilidade de alterá-lo diretamente
     public int health { get { return currentHealth; } }
@@ -31,11 +34,12 @@ public class PlayerController : MonoBehaviour
     {
         // ativando a ação de movimento, que foi definida no editor do Unity
         MoveAction.Enable();
+        Attack.Enable();
         rb = GetComponent<Rigidbody2D>();
 
         currentHealth = maxHealth;
 
-   
+
 
         //QualitySettings.vSyncCount = 0;
         //Application.targetFrameRate = 10;
@@ -72,7 +76,11 @@ public class PlayerController : MonoBehaviour
                 isInvincibleHeal = false;
             }
         }
-      
+
+        if(Attack.triggered)
+        {
+            Swing(); // Chama a função Swing quando o botão de ataque é pressionado
+        }
     }
 
     void FixedUpdate()
@@ -92,10 +100,10 @@ public class PlayerController : MonoBehaviour
         {
             Flip();
         }
-         
-           
+
+
     }
-    
+
     void Flip()
     {
         FacingDirection *= -1; // Inverte a direção de face do personagem
@@ -116,6 +124,8 @@ public class PlayerController : MonoBehaviour
             // caso IsInvincible seja falso, seta ele para verdadeiro e reseta o cooldown de dano
             isInvincible = true;
             damageCooldown = timeInvincible;
+            // Parametros de trigger para o animador, aqui ele considera que o personagem tomou dano e vai executar a animação relacionada ao trigger Hit'
+            anim.SetTrigger("Hit");
         }
 
         if (amount > 0)
@@ -135,7 +145,15 @@ public class PlayerController : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
 
         UIHandler.instance.SetHealthValue(currentHealth / (float)maxHealth);
+        
 
+    }
 
+    void Swing()
+    {
+        Vector2 hitbox = transform.position;
+        Vector2 spawnOffset = new Vector2(FacingDirection * 0.6f, 0f); // 0.6 unidades à frente na direção do player
+        GameObject projectileObject = Instantiate(attackPrefab, hitbox + spawnOffset, Quaternion.identity);
+        anim.SetTrigger("Attack");
     }
 }
