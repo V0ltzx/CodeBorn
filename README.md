@@ -16,6 +16,10 @@
  - Tela inicial
  - Sistema verdadeiro de programação e adição de objetos :star: 
  - Mapa(?)
- 
+
+ O que devemos arrumar:
+ - Personagem esticando ao se mover pra esquerda
+ - Transformas os pilares em um objeto
+ - Corrigir o ponto de ancoragem das sprites, para que a ordem  de renderização esteja correta
  
  </div>
