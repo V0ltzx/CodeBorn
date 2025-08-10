@@ -1,3 +1,4 @@
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 0.1f;
     // Criação de uma input action que tem como tipo (definido no editor) como value, tendo maior flexibilidade
     public InputAction MoveAction;
+    public Animator anim;
     Rigidbody2D rb;
     Vector2 move;
 
@@ -13,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public int health { get { return currentHealth; } }
     public int maxHealth = 5;
     int currentHealth;
+    int FacingDirection = 1; // O personagem inicialmente está virado para a direita
 
     // Variables related to temporary invincibility
     public float timeInvincible = 1.0f;
@@ -76,6 +79,28 @@ public class PlayerController : MonoBehaviour
         // Aplicando a velocidade do movimento no Rigidbody2D do objeto, assim permitindo um resposta maior do sistema de calculo de fisica, multiplicando pelo deltaTime para manter a velocidade constante
         Vector2 position = (Vector2)rb.position + move * speed * Time.deltaTime;
         rb.MovePosition(position);
+
+        // Estou colocando os valores de x e y nas variavéis de condição do Animator,
+        // o move.x/y usa o operador de ponto para pegar as partes especficas da variável position que é um Vector2, possuindo tanto x e y simultaneamente que esta recebendo do MoveAction
+        // Mathf.Abs é usado para pegar o valor absoluto do movimento
+        anim.SetFloat("horizontal", Mathf.Abs(move.x));
+        anim.SetFloat("vertical", Mathf.Abs(move.y));
+
+        // Verifica se o personagem esta virado para o lado contrário do movimento e então chama a função Flip que altera a escala do personagem para inverter a direção
+        if (move.x > 0 && transform.localScale.x < 0 || move.x < 0 && transform.localScale.x > 0)
+        {
+            Flip();
+        }
+         
+           
+    }
+    
+    void Flip()
+    {
+        FacingDirection *= -1; // Inverte a direção de face do personagem
+
+        // O componente localscale n pode ser alterado individualmente, por isso mudamos oq nos queremos e mantemos o resto do scale do personagem
+        transform.localScale = new Vector3(FacingDirection, transform.localScale.y, transform.localScale.z); // Altera a escala do personagem para inverter a direção
     }
 
     public void ChangeHealth(int amount)
