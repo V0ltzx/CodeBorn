@@ -6,14 +6,21 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 0.1f;
+    
+    
     // Criação de uma input action que tem como tipo (definido no editor) como value, tendo maior flexibilidade
     public InputAction MoveAction;
     public InputAction Attack;
+
+    // Componentes 
     public Animator anim;
     Rigidbody2D rb;
-    Vector2 move;
     public GameObject attackPrefab;
+    
+    // Variáveis padrão
+    Vector2 move;
+    public float speed = 0.1f;
+
 
     //a variavel health é uma propriedade que retorna o valor de currentHealth, assim permitindo o acesso ao valor do currentHealth sem a possibilidade de alterá-lo diretamente
     public int health { get { return currentHealth; } }
@@ -21,14 +28,21 @@ public class PlayerController : MonoBehaviour
     int currentHealth;
     int FacingDirection = 1; // O personagem inicialmente está virado para a direita
 
-    // Variables related to temporary invincibility
+    // Timer de invencibilidade
     public float timeInvincible = 1.0f;
-    public float timeInvincibleHeal = 2.0f;
-    bool isInvincible;
-    bool isInvincibleHeal;
-    public bool InvinciHeal { get { return isInvincibleHeal; } }
     float damageCooldown;
+    bool isInvincible;
+
+    // Timer de invencibilidade de cura
+    public float timeInvincibleHeal = 2.0f;
+    bool isInvincibleHeal;
+    public bool InvinciHeal { get { return isInvincibleHeal; } }   
     float damageCooldownHeal;
+
+    // Cooldown de ataque
+    public float timeAttack = 1f;
+    float attackCooldown;
+    bool canAttack;
 
     void Start()
     {
@@ -56,7 +70,7 @@ public class PlayerController : MonoBehaviour
         //Vector2 position = (Vector2)transform.position + move * speed * Time.deltaTime; 
         //transform.position = position;
 
-        // caso isInvincible seja verdadeiro
+        // Timer de invincibilidade
         if (isInvincible)
         {
             // retira por frame, quanto tempo um frame dura, essencialmente contando o tempo que o jogador falta para não estar invencível
@@ -67,6 +81,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        // Timer de invencibilidade de cura
         if (isInvincibleHeal)
         {
             // retira por frame, quanto tempo um frame dura, essencialmente contando o tempo que o jogador falta para não estar invencível
@@ -77,7 +92,18 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(Attack.triggered)
+        // Cooldown de ataque
+        if (!canAttack)
+        {
+            attackCooldown -= Time.deltaTime; // Retira o tempo do cooldown de ataque
+            if (attackCooldown <= 0f) // Se o cooldown de ataque for menor ou igual a 0, o jogador pode atacar novamente
+            {
+                canAttack = true;
+            }
+        }
+
+        // Função Ataque, acionado com o InputAction Attack
+        if (Attack.triggered)
         {
             Swing(); // Chama a função Swing quando o botão de ataque é pressionado
         }
@@ -109,7 +135,7 @@ public class PlayerController : MonoBehaviour
         FacingDirection *= -1; // Inverte a direção de face do personagem
 
         // O componente localscale n pode ser alterado individualmente, por isso mudamos oq nos queremos e mantemos o resto do scale do personagem
-        transform.localScale = new Vector3(FacingDirection, transform.localScale.y, transform.localScale.z); // Altera a escala do personagem para inverter a direção
+        transform.localScale = new Vector3(FacingDirection * transform.localScale.x, transform.localScale.y, transform.localScale.z); // Altera a escala do personagem para inverter a direção
     }
 
     public void ChangeHealth(int amount)
@@ -151,9 +177,16 @@ public class PlayerController : MonoBehaviour
 
     void Swing()
     {
+        if (!canAttack)
+        {
+            return; // Se não puder atacar, sai da função
+        }
+        canAttack = false; // Desabilita o ataque até o cooldown acabar]
+        attackCooldown = timeAttack; // Reseta o cooldown de ataque
         Vector2 hitbox = transform.position;
-        Vector2 spawnOffset = new Vector2(FacingDirection * 0.6f, 0f); // 0.6 unidades à frente na direção do player
+        Vector2 spawnOffset = new Vector2(FacingDirection * 0.5f, 0f); // 0.5 unidades à frente na direção do player
         GameObject projectileObject = Instantiate(attackPrefab, hitbox + spawnOffset, Quaternion.identity);
         anim.SetTrigger("Attack");
+        
     }
 }

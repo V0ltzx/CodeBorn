@@ -1,31 +1,25 @@
 fileFormatVersion: 2
-guid: 5eddbdf2474741843a98ae72acd75b27
+guid: 47da6c4ef83f68a44bdef7e0dd5a74e4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7384290322352760091
-    second: Warrior_Idle_0
+      213: -3855612497592199448
+    second: Warrior_GuardFlash_0
   - first:
-      213: 5558041129755138300
-    second: Warrior_Idle_1
+      213: -5252052598398044670
+    second: Warrior_GuardFlash_1
   - first:
-      213: 5494728702781700201
-    second: Warrior_Idle_2
+      213: -1932863902123386084
+    second: Warrior_GuardFlash_2
   - first:
-      213: 855971943943930739
-    second: Warrior_Idle_3
+      213: 5686194612501046868
+    second: Warrior_GuardFlash_3
   - first:
-      213: 8590257050535953886
-    second: Warrior_Idle_4
+      213: 8204250874776213018
+    second: Warrior_GuardFlash_4
   - first:
-      213: -1175184007495930954
-    second: Warrior_Idle_5
-  - first:
-      213: -4675935811743254547
-    second: Warrior_Idle_6
-  - first:
-      213: 1839488653993705794
-    second: Warrior_Idle_7
+      213: -6327277231367668025
+    second: Warrior_GuardFlash_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -134,13 +128,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Warrior_Idle_0
+      name: Warrior_GuardFlash_0
       rect:
         serializedVersion: 2
-        x: 59
+        x: 56
         y: 54
-        width: 81
-        height: 91
+        width: 70
+        height: 95
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,42 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b15e03eace44a7660800000000000000
-      internalID: 7384290322352760091
+      spriteID: 8e6d5718cdc1e7ac0800000000000000
+      internalID: -3855612497592199448
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior_Idle_1
+      name: Warrior_GuardFlash_1
       rect:
         serializedVersion: 2
-        x: 252
-        y: 53
-        width: 81
-        height: 91
-      alignment: 9
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cf8d012b5f0222d40800000000000000
-      internalID: 5558041129755138300
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Warrior_Idle_2
-      rect:
-        serializedVersion: 2
-        x: 445
+        x: 248
         y: 54
-        width: 81
-        height: 90
+        width: 71
+        height: 93
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +165,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 968327294a2314c40800000000000000
-      internalID: 5494728702781700201
+      spriteID: 20631d20df5fc17b0800000000000000
+      internalID: -5252052598398044670
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior_Idle_3
+      name: Warrior_GuardFlash_2
       rect:
         serializedVersion: 2
-        x: 635
+        x: 440
         y: 54
-        width: 83
-        height: 88
+        width: 72
+        height: 92
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,42 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3738a78a2f501eb00800000000000000
-      internalID: 855971943943930739
+      spriteID: c1b92c295861d25e0800000000000000
+      internalID: -1932863902123386084
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior_Idle_4
+      name: Warrior_GuardFlash_3
       rect:
         serializedVersion: 2
-        x: 829
-        y: 53
-        width: 85
-        height: 87
-      alignment: 9
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ed58d7a3649b63770800000000000000
-      internalID: 8590257050535953886
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Warrior_Idle_5
-      rect:
-        serializedVersion: 2
-        x: 1019
+        x: 633
         y: 54
-        width: 85
-        height: 87
+        width: 69
+        height: 93
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,20 +209,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6bb2c7f1f58e0bfe0800000000000000
-      internalID: -1175184007495930954
+      spriteID: 4566dd19fdb69ee40800000000000000
+      internalID: 5686194612501046868
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior_Idle_6
+      name: Warrior_GuardFlash_4
       rect:
         serializedVersion: 2
-        x: 1211
+        x: 824
         y: 54
-        width: 84
-        height: 89
+        width: 69
+        height: 94
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,20 +231,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: de7f384472dbb1fb0800000000000000
-      internalID: -4675935811743254547
+      spriteID: a16593fd3ba5bd170800000000000000
+      internalID: 8204250874776213018
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior_Idle_7
+      name: Warrior_GuardFlash_5
       rect:
         serializedVersion: 2
-        x: 1404
+        x: 1016
         y: 54
-        width: 82
-        height: 90
+        width: 69
+        height: 95
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -303,8 +253,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 24108ad4f2d278910800000000000000
-      internalID: 1839488653993705794
+      spriteID: 7ceb9e4a1eef038a0800000000000000
+      internalID: -6327277231367668025
       vertices: []
       indices: 
       edges: []
@@ -313,7 +263,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: b6484f517da7dda4f9cac5677b21a4fb
+    spriteID: 45b35d0e206b09c4e9c9f17bbb76fa65
     internalID: 0
     vertices: []
     indices: 
@@ -323,14 +273,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Warrior_Idle_0: 7384290322352760091
-      Warrior_Idle_1: 5558041129755138300
-      Warrior_Idle_2: 5494728702781700201
-      Warrior_Idle_3: 855971943943930739
-      Warrior_Idle_4: 8590257050535953886
-      Warrior_Idle_5: -1175184007495930954
-      Warrior_Idle_6: -4675935811743254547
-      Warrior_Idle_7: 1839488653993705794
+      Warrior_GuardFlash_0: -3855612497592199448
+      Warrior_GuardFlash_1: -5252052598398044670
+      Warrior_GuardFlash_2: -1932863902123386084
+      Warrior_GuardFlash_3: 5686194612501046868
+      Warrior_GuardFlash_4: 8204250874776213018
+      Warrior_GuardFlash_5: -6327277231367668025
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

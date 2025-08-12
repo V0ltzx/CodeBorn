@@ -127,7 +127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 331a41b4ea49e8a44a59a7209aeaf796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
   MoveAction:
     m_Name: Move
     m_Type: 0
@@ -197,9 +196,11 @@ MonoBehaviour:
   anim: {fileID: 5148464969543134001}
   attackPrefab: {fileID: 2359505244663051598, guid: 3a6ece7870fe0234083f5a3e2bb4fd1d,
     type: 3}
+  speed: 2
   maxHealth: 5
   timeInvincible: 0.88
   timeInvincibleHeal: 2
+  timeAttack: 1
 --- !u!50 &8268862115101096834
 Rigidbody2D:
   serializedVersion: 5
@@ -261,17 +262,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.030023336, y: -0.29022586}
+  m_Offset: {x: -0.041633517, y: 0.20919113}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 0.81, y: 0.91}
     newSize: {x: 0.67, y: 0.92}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.74995327, y: 0.16942346}
+  m_Size: {x: 0.41491586, y: 0.24240175}
   m_EdgeRadius: 0
 --- !u!1 &8889564845576386815
 GameObject:
@@ -286,7 +287,7 @@ GameObject:
   - component: {fileID: 5430971151781178247}
   - component: {fileID: 7492875472724495157}
   - component: {fileID: 2296947107818497745}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -343,7 +344,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 0.5
+  orthographic size: 0.8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
