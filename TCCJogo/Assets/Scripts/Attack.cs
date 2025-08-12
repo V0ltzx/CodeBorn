@@ -9,7 +9,7 @@ public class Attack : MonoBehaviour
     void Awake()
     {
         collider2d = GetComponent<Collider2D>();
-        Destroy(gameObject, 0.25f);
+        Destroy(gameObject, 10.25f);
     }
 
 

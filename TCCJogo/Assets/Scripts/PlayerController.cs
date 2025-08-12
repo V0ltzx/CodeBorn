@@ -20,13 +20,14 @@ public class PlayerController : MonoBehaviour
     // Variáveis padrão
     Vector2 move;
     public float speed = 0.1f;
+    float FacingDirection = 0.3f; // O personagem inicialmente está virado para a direita
 
 
     //a variavel health é uma propriedade que retorna o valor de currentHealth, assim permitindo o acesso ao valor do currentHealth sem a possibilidade de alterá-lo diretamente
     public int health { get { return currentHealth; } }
     public int maxHealth = 5;
     int currentHealth;
-    int FacingDirection = 1; // O personagem inicialmente está virado para a direita
+    
 
     // Timer de invencibilidade
     public float timeInvincible = 1.0f;
@@ -136,9 +137,9 @@ public class PlayerController : MonoBehaviour
     void Flip()
     {
         FacingDirection *= -1; // Inverte a direção de face do personagem
-
+        Debug.Log("Flip: " + FacingDirection);
         // O componente localscale n pode ser alterado individualmente, por isso mudamos oq nos queremos e mantemos o resto do scale do personagem
-        transform.localScale = new Vector3(FacingDirection * transform.localScale.x, transform.localScale.y, transform.localScale.z); // Altera a escala do personagem para inverter a direção
+        transform.localScale = new Vector3(-1 * transform.localScale.x, transform.localScale.y, transform.localScale.z); // Altera a escala do personagem para inverter a direção
     }
 
     public void ChangeHealth(int amount)
@@ -184,13 +185,23 @@ public class PlayerController : MonoBehaviour
         {
             return; // Se não puder atacar, sai da função
         }
-        canAttack = false; // Desabilita o ataque até o cooldown acabar]
+        canAttack = false; // Desabilita o ataque até o cooldown acabar
         attackCooldown = timeAttack; // Reseta o cooldown de ataque
         Vector2 hitbox = transform.position;
 
         // 0.5 unidades à frente na direção do player
-        Vector2 spawnOffset = new Vector2(FacingDirection * 0.5f, 0.1f); 
-        GameObject projectileObject = Instantiate(attackPrefab, hitbox + spawnOffset, Quaternion.identity);
+        if (transform.localScale.x > 0) 
+        { 
+            Vector2 spawnOffset = new Vector2(0.187f, 0.1f);
+        
+            GameObject projectileObject = Instantiate(attackPrefab, hitbox + spawnOffset, Quaternion.identity);
+        }
+        if(transform.localScale.x < 0) 
+        { 
+            Vector2 spawnOffset = new Vector2( 0.0f, 0.1f);
+        
+            GameObject projectileObject = Instantiate(attackPrefab, hitbox + spawnOffset, Quaternion.identity);
+        }
         anim.SetTrigger("Attack");
         
     }
