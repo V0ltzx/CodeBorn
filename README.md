@@ -21,5 +21,5 @@
  - Personagem esticando ao se mover pra esquerda
  - Transformas os pilares em um objeto
  - Corrigir o ponto de ancoragem das sprites, para que a ordem  de renderização esteja correta
- 
+ - Melhorar o feel das animações (Piscar ao levar dano, etc...) 
  </div>
