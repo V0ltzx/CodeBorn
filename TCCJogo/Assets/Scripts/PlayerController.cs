@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     public float timeAttack = 1f;
     float attackCooldown;
     bool canAttack;
+    
 
     void Start()
     {
@@ -53,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
         currentHealth = maxHealth;
 
-
+        
 
         //QualitySettings.vSyncCount = 0;
         //Application.targetFrameRate = 10;
@@ -74,7 +75,7 @@ public class PlayerController : MonoBehaviour
         if (isInvincible)
         {
             // retira por frame, quanto tempo um frame dura, essencialmente contando o tempo que o jogador falta para não estar invencível
-            damageCooldown -= Time.deltaTime;
+            damageCooldown = Mathf.Clamp(damageCooldown - Time.deltaTime, 0, timeInvincible);
             if (damageCooldown < 0)
             {
                 isInvincible = false;
@@ -85,7 +86,7 @@ public class PlayerController : MonoBehaviour
         if (isInvincibleHeal)
         {
             // retira por frame, quanto tempo um frame dura, essencialmente contando o tempo que o jogador falta para não estar invencível
-            damageCooldownHeal -= Time.deltaTime;
+            damageCooldownHeal = Mathf.Clamp(damageCooldownHeal - Time.deltaTime, 0, timeInvincibleHeal);
             if (damageCooldownHeal < 0)
             {
                 isInvincibleHeal = false;
@@ -95,11 +96,13 @@ public class PlayerController : MonoBehaviour
         // Cooldown de ataque
         if (!canAttack)
         {
-            attackCooldown -= Time.deltaTime; // Retira o tempo do cooldown de ataque
+            attackCooldown = Mathf.Clamp(attackCooldown - Time.deltaTime, 0, timeAttack);
+         
             if (attackCooldown <= 0f) // Se o cooldown de ataque for menor ou igual a 0, o jogador pode atacar novamente
             {
                 canAttack = true;
             }
+
         }
 
         // Função Ataque, acionado com o InputAction Attack
@@ -184,7 +187,9 @@ public class PlayerController : MonoBehaviour
         canAttack = false; // Desabilita o ataque até o cooldown acabar]
         attackCooldown = timeAttack; // Reseta o cooldown de ataque
         Vector2 hitbox = transform.position;
-        Vector2 spawnOffset = new Vector2(FacingDirection * 0.5f, 0f); // 0.5 unidades à frente na direção do player
+
+        // 0.5 unidades à frente na direção do player
+        Vector2 spawnOffset = new Vector2(FacingDirection * 0.5f, 0.1f); 
         GameObject projectileObject = Instantiate(attackPrefab, hitbox + spawnOffset, Quaternion.identity);
         anim.SetTrigger("Attack");
         

@@ -200,7 +200,7 @@ MonoBehaviour:
   maxHealth: 5
   timeInvincible: 0.88
   timeInvincibleHeal: 2
-  timeAttack: 1
+  timeAttack: 0.7
 --- !u!50 &8268862115101096834
 Rigidbody2D:
   serializedVersion: 5

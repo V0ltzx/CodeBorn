@@ -5,6 +5,7 @@ public class UIHandler : MonoBehaviour
 {
     public static UIHandler instance { get; private set; }
     private VisualElement m_Healthbar;
+  
 
     private void Awake()
     {
@@ -15,7 +16,9 @@ public class UIHandler : MonoBehaviour
 
         UIDocument uiDocument = GetComponent<UIDocument>();
         m_Healthbar = uiDocument.rootVisualElement.Q<VisualElement>("HealthBar");
+       
         SetHealthValue(1.0f);
+      
 
     }
     public void SetHealthValue(float percentage)
@@ -23,4 +26,5 @@ public class UIHandler : MonoBehaviour
         m_Healthbar.style.width = Length.Percent(100 * percentage);
     }
 
+    
 }
