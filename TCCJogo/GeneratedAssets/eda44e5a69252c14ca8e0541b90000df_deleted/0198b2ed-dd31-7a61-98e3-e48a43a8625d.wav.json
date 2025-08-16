@@ -1,0 +1,13 @@
+{
+    "asset": "eda44e5a69252c14ca8e0541b90000df",
+    "fileName": "0198b2ed-dd31-7a61-98e3-e48a43a8625d.wav",
+    "prompt": "sword slash",
+    "negativePrompt": "reverb, music, distorted",
+    "model": "0ee39b33-2893-4e0f-8c46-0e0bdd4eda85",
+    "modelName": "Text to Sound",
+    "customSeed": -1,
+    "w3CTraceId": "b9f5dd50bcd2c6d036e9410bb1e1cb6e",
+    "duration": 1.0,
+    "autoTrim": true,
+    "hasReference": false
+}

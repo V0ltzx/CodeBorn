@@ -1,0 +1,20 @@
+{
+    "asset": "75267bcae1ae5f74c8bd75b14ffd7557",
+    "fileName": "0198b2e5-dcb0-798e-be09-714cd2b6de7b.png",
+    "prompt": "Slime monster, Top-down view, 2D, Vibrant red, old RPG style",
+    "negativePrompt": "blurry, shadows, background, cute",
+    "model": "242b56c1-2224-41c4-8949-2ba760bbfc69",
+    "modelName": "16-bit Pixel",
+    "customSeed": -1,
+    "w3CTraceId": "a9b9dafef71f0435fac8238269de5120",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

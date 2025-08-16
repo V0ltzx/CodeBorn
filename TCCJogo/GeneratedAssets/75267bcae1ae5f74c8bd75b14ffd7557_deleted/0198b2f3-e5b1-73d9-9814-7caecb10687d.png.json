@@ -1,0 +1,20 @@
+{
+    "asset": "75267bcae1ae5f74c8bd75b14ffd7557",
+    "fileName": "0198b2f3-e5b1-73d9-9814-7caecb10687d.png",
+    "prompt": "Slime monster, Top-down view, 2D, Vibrant red, blob, semi-circle",
+    "negativePrompt": "blurry, shadows, background, eyes, mouth",
+    "model": "c65c79a0-b2af-46da-a8e5-2fc106ec2ab6",
+    "modelName": "RPG Chibis",
+    "customSeed": -1,
+    "w3CTraceId": "7dabb7d38acd8cfa68f844e0a3d163cb",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

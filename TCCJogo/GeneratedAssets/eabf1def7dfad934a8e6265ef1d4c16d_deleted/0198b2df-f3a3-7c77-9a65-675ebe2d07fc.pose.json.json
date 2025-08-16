@@ -1,0 +1,11 @@
+{
+    "asset": "eabf1def7dfad934a8e6265ef1d4c16d",
+    "fileName": "0198b2df-f3a3-7c77-9a65-675ebe2d07fc.pose.json",
+    "prompt": "Slime, walk, 2D",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 434946988,
+    "w3CTraceId": "476b55e41008a48f335a4c58d3b46894",
+    "isTrimmed": false
+}

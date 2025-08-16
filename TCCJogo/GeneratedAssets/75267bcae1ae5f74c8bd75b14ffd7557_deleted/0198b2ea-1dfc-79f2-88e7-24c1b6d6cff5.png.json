@@ -1,0 +1,20 @@
+{
+    "asset": "75267bcae1ae5f74c8bd75b14ffd7557",
+    "fileName": "0198b2ea-1dfc-79f2-88e7-24c1b6d6cff5.png",
+    "prompt": "Slime monster, Top-down view, 2D, Vibrant red, blob",
+    "negativePrompt": "blurry, shadows, background",
+    "model": "242b56c1-2224-41c4-8949-2ba760bbfc69",
+    "modelName": "16-bit Pixel",
+    "customSeed": -1,
+    "w3CTraceId": "f59d78c42b1d1c8c38e183d27d74db32",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}
