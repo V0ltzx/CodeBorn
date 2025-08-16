@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class EnemyController : MonoBehaviour
 {
 
@@ -11,19 +12,24 @@ public class EnemyController : MonoBehaviour
     int direction = 1;
     public int healthMax;
     int currentHealth;
+    public GameObject player;
+    float range = 1.0f;
+    float distance;
 
-   
-
+    
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         Timer = PatrolTime;
         currentHealth = healthMax;
+
+        
     }
 
     void Update()
     {
+
 
         Timer -= Time.deltaTime;
         if (Timer < 0)
@@ -42,26 +48,41 @@ public class EnemyController : MonoBehaviour
     void FixedUpdate()
     {
 
+        Vector2 playerPosition = player.transform.position;
+        Vector2 myPosition = transform.position;
+
+        // Calcula a distância entre dois vetores
+        distance = Vector2.Distance(playerPosition, myPosition);
 
         // Declara uma variável Vector2 para armazenar a posição atual do Rigidbody2D do inimigo
         Vector2 position = rb.position;
 
-        if (vertical == false)
+        if (distance > range)
         {
-            // Pega o valor x da posição atual e adiciona a velocidade multiplicada pelo tempo fixo (Time.fixedDeltaTime) para mover o inimigo horizontalmente
-            position.x = position.x + speed * direction * Time.fixedDeltaTime;
+            if (vertical == false)
+            {
+                // Pega o valor x da posição atual e adiciona a velocidade multiplicada pelo tempo fixo (Time.fixedDeltaTime) para mover o inimigo horizontalmente
+                position.x = position.x + speed * direction * Time.fixedDeltaTime;
+            }
+            else
+            {
+                //Pega o valor y da posição atual e adiciona a velocidade multiplicada pelo tempo fixo (Time.fixedDeltaTime) para mover o inimigo horizontalmente
+                position.y = position.y + speed * direction * Time.fixedDeltaTime;
+            }
+
+            rb.MovePosition(position);
         }
-        else
+        else if (distance <= range)
         {
-            //Pega o valor y da posição atual e adiciona a velocidade multiplicada pelo tempo fixo (Time.fixedDeltaTime) para mover o inimigo horizontalmente
-            position.y = position.y + speed * direction * Time.fixedDeltaTime;
+            // MoveTowards pega a posição atual no primeiro parâmetro, a posição do traget no segundo parâmetro e uma velocidade para o movimento no terceiro parâmetro
+            // É possível adicionar um parâmetro de distancia máxima, que em valores negativos faz o objeto se afastar   
+            transform.position = Vector2.MoveTowards(myPosition, playerPosition, speed * Time.fixedDeltaTime);
         }
 
-        // Move o rigidbody para a nova posição calculada
-        rb.MovePosition(position);
+        
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         PlayerController controller = other.GetComponent<PlayerController>();
         if (controller != null)
