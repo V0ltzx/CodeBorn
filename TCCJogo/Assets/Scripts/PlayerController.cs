@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     // Criação de uma input action que tem como tipo (definido no editor) como value, tendo maior flexibilidade
     public InputAction MoveAction;
     public InputAction Attack;
+    public InputAction Interact;
 
     // Componentes 
     public Animator anim;
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour
         // ativando a ação de movimento, que foi definida no editor do Unity
         MoveAction.Enable();
         Attack.Enable();
+        Interact.Enable();
         rb = GetComponent<Rigidbody2D>();
 
         currentHealth = maxHealth;
@@ -110,6 +112,11 @@ public class PlayerController : MonoBehaviour
         if (Attack.triggered)
         {
             Swing(); // Chama a função Swing quando o botão de ataque é pressionado
+        }
+
+        if(Interact.triggered)
+        {
+            InteractAction(); // Chama a função InteractAction quando o botão de interação é pressionado
         }
     }
 
@@ -206,5 +213,23 @@ public class PlayerController : MonoBehaviour
         }
         anim.SetTrigger("Attack");
         
+    }
+
+    void InteractAction()
+    {
+        // Um raycast é um tipo de detecção de colisão que verifica se há algum objeto na direção e layers especificados
+        // O primeiro parâmetro é a posição de origem do raycast, o segundo parâmetro é a direção do raycast, o terceiro é a distância que o raycast irá percorrer e o quarto é a layer que ele irá verificar
+        RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector2.up, 0.3f, LayerMask.GetMask("Dialogo"));
+
+        // Se o ray atingir um collider, ele executa o código dentro do if
+        if (hit.collider != null)
+        {
+            Dialogo interagivel = hit.collider.GetComponent<Dialogo>();
+            if (interagivel != null)
+            {
+                string text = interagivel.text;
+                UIHandler.instance.DisplayDialogue(text);
+            }
+        }
     }
 }

@@ -1,7 +1,9 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="SignUI" src="project://database/Assets/UI/SignUI.uxml?fileID=9197481963319205126&amp;guid=ccbc046e0d709bd48a70c5939fd0b201&amp;type=3#SignUI" />
     <ui:VisualElement name="HealthBarBackground" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Downloads/SimplePixelUI/artwork/gray/rounded/Background_GB_rounded.png?fileID=21300000&amp;guid=d3c0f49491ca1984db8f070190a53b2a&amp;type=3#Background_GB_rounded&quot;); width: 543px; height: 38px; -unity-background-scale-mode: stretch-to-fill;">
         <ui:VisualElement name="HealthBarContainer" style="flex-grow: 0;">
             <ui:VisualElement name="HealthBar" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Downloads/SimplePixelUI/artwork/colorCustomizible/square/health_bar.png?fileID=21300000&amp;guid=82306ec1555e74d41b5fc97d5e09f8e2&amp;type=3#health_bar&quot;); width: 530px; height: 29px; position: absolute; top: 4px; left: 7px; -unity-background-image-tint-color: rgb(255, 0, 0);" />
         </ui:VisualElement>
     </ui:VisualElement>
+    <ui:Instance template="SignUI" style="position: absolute; top: 70%; left: 10%; right: 10%; bottom: 0%;" />
 </ui:UXML>
