@@ -198,7 +198,7 @@ MonoBehaviour:
     type: 3}
   speed: 2
   maxHealth: 5
-  timeInvincible: 0.88
+  timeInvincible: 0.7
   timeInvincibleHeal: 2
   timeAttack: 0.7
 --- !u!50 &8268862115101096834

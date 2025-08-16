@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         if (isInvincible)
         {
             // retira por frame, quanto tempo um frame dura, essencialmente contando o tempo que o jogador falta para não estar invencível
-            damageCooldown = Mathf.Clamp(damageCooldown - Time.deltaTime, 0, timeInvincible);
+            damageCooldown -= Time.deltaTime;
             if (damageCooldown < 0)
             {
                 isInvincible = false;
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
         if (isInvincibleHeal)
         {
             // retira por frame, quanto tempo um frame dura, essencialmente contando o tempo que o jogador falta para não estar invencível
-            damageCooldownHeal = Mathf.Clamp(damageCooldownHeal - Time.deltaTime, 0, timeInvincibleHeal);
+            damageCooldownHeal -= Time.deltaTime;
             if (damageCooldownHeal < 0)
             {
                 isInvincibleHeal = false;
@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour
     void Flip()
     {
         FacingDirection *= -1; // Inverte a direção de face do personagem
-        Debug.Log("Flip: " + FacingDirection);
+        
         // O componente localscale n pode ser alterado individualmente, por isso mudamos oq nos queremos e mantemos o resto do scale do personagem
         transform.localScale = new Vector3(-1 * transform.localScale.x, transform.localScale.y, transform.localScale.z); // Altera a escala do personagem para inverter a direção
     }
@@ -173,7 +173,7 @@ public class PlayerController : MonoBehaviour
         // restringe a uma faixa fixa de valores uma variavel, o primeiro valor (currenthealt + amount) é o valor que será restringido,
         // o segundo valor é o valor mínimo (0) e o terceiro é o valor máximo (maxHealth)
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-
+        Debug.Log("Current Health: " + currentHealth);
         UIHandler.instance.SetHealthValue(currentHealth / (float)maxHealth);
         
 
@@ -189,7 +189,9 @@ public class PlayerController : MonoBehaviour
         attackCooldown = timeAttack; // Reseta o cooldown de ataque
         Vector2 hitbox = transform.position;
 
-        // 0.5 unidades à frente na direção do player
+        // Instancia a hitbox do ataque a algumas unidades do personagem, dependendo da direção que ele está virado
+        // A hitbox do ataque está fora da posição do seu gameobject,
+        // então é necessário adicionar um offset para que a hitbox fique na posição correta olhando para a direita, mas não para esquerda que o offset da hitbox esta pendendo
         if (transform.localScale.x > 0) 
         { 
             Vector2 spawnOffset = new Vector2(0.187f, 0.1f);
