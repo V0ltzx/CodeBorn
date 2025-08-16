@@ -4102,6 +4102,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3682244545745013145, guid: c13d8595e90bb8845bf5ccde90b9535e,
+        type: 3}
+      propertyPath: Interact.m_Name
+      value: Interact
+      objectReference: {fileID: 0}
     - target: {fileID: 7834701516956079376, guid: c13d8595e90bb8845bf5ccde90b9535e,
         type: 3}
       propertyPath: m_Name
@@ -5939,6 +5944,79 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f37c5a121b86e924d9bf0e014ac805b3, type: 3}
+--- !u!1001 &1233105057
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5996925139091716786, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_Name
+      value: VasoDialogo (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212604088001190214, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.511
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212604088001190214, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.383
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212604088001190214, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212604088001190214, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212604088001190214, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212604088001190214, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212604088001190214, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212604088001190214, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212604088001190214, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212604088001190214, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798083314696367828, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: text
+      value: Ola boa tarde
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7fd28d16276e5554fa2cc11949349844, type: 3}
 --- !u!1 &1424441334
 GameObject:
   m_ObjectHideFlags: 0
@@ -16740,6 +16818,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7280211321d084c9223bb95730f4ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayTime: 4
+  dialogo: {fileID: 0}
 --- !u!1001 &1818556018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18076,6 +18156,79 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1998304287}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1259429597687253064
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5996925139091716786, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_Name
+      value: VasoDialogo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212604088001190214, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.346
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212604088001190214, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.383
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212604088001190214, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212604088001190214, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212604088001190214, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212604088001190214, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212604088001190214, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212604088001190214, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212604088001190214, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212604088001190214, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798083314696367828, guid: 7fd28d16276e5554fa2cc11949349844,
+        type: 3}
+      propertyPath: text
+      value: Ola bom dia
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7fd28d16276e5554fa2cc11949349844, type: 3}
 --- !u!1001 &7997336718926719997
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18156,3 +18309,5 @@ SceneRoots:
   - {fileID: 1600974779}
   - {fileID: 1424441336}
   - {fileID: 490701367}
+  - {fileID: 1259429597687253064}
+  - {fileID: 1233105057}

@@ -1,0 +1,5 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Background" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Downloads/SimplePixelUI/artwork/gray/rounded/Background_GB_rounded.png?fileID=21300000&amp;guid=d3c0f49491ca1984db8f070190a53b2a&amp;type=3#Background_GB_rounded&quot;);">
+        <ui:Label text="Por enquanto e so um teste" name="Label" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 25px; padding-right: 25px; padding-bottom: 25px; padding-left: 25px; -unity-font-definition: url(&quot;project://database/Assets/Downloads/Thaleah_PixelFont/Materials/ThaleahFat_TTF.ttf?fileID=12800000&amp;guid=585188cdc4600544eb408bee749e4b3a&amp;type=3#ThaleahFat_TTF&quot;); font-size: 40px; white-space: normal;" />
+    </ui:VisualElement>
+</ui:UXML>
