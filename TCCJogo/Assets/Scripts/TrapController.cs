@@ -13,6 +13,15 @@ public class TrapController : MonoBehaviour
     }
  
 
+<<<<<<< Updated upstream
+=======
+    public void disable_trap()
+    {
+        enabletrap = false;
+        anim.SetBool("IsActive", false);
+    }
+
+>>>>>>> Stashed changes
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!enabletrap) return;
