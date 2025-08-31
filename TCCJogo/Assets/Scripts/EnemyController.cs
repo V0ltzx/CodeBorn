@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 
 public class EnemyController : MonoBehaviour
@@ -15,8 +16,10 @@ public class EnemyController : MonoBehaviour
     public GameObject player;
     float range = 1.0f;
     float distance;
+    NavMeshAgent agent;
 
-    
+
+
 
     void Start()
     {
@@ -24,7 +27,10 @@ public class EnemyController : MonoBehaviour
         Timer = PatrolTime;
         currentHealth = healthMax;
 
-        
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+
     }
 
     void Update()
@@ -51,22 +57,22 @@ public class EnemyController : MonoBehaviour
         Vector2 playerPosition = player.transform.position;
         Vector2 myPosition = transform.position;
 
-        // Calcula a distância entre dois vetores
+        // Calcula a distï¿½ncia entre dois vetores
         distance = Vector2.Distance(playerPosition, myPosition);
 
-        // Declara uma variável Vector2 para armazenar a posição atual do Rigidbody2D do inimigo
+        // Declara uma variï¿½vel Vector2 para armazenar a posiï¿½ï¿½o atual do Rigidbody2D do inimigo
         Vector2 position = rb.position;
 
         if (distance > range)
         {
             if (vertical == false)
             {
-                // Pega o valor x da posição atual e adiciona a velocidade multiplicada pelo tempo fixo (Time.fixedDeltaTime) para mover o inimigo horizontalmente
+                // Pega o valor x da posiï¿½ï¿½o atual e adiciona a velocidade multiplicada pelo tempo fixo (Time.fixedDeltaTime) para mover o inimigo horizontalmente
                 position.x = position.x + speed * direction * Time.fixedDeltaTime;
             }
             else
             {
-                //Pega o valor y da posição atual e adiciona a velocidade multiplicada pelo tempo fixo (Time.fixedDeltaTime) para mover o inimigo horizontalmente
+                //Pega o valor y da posiï¿½ï¿½o atual e adiciona a velocidade multiplicada pelo tempo fixo (Time.fixedDeltaTime) para mover o inimigo horizontalmente
                 position.y = position.y + speed * direction * Time.fixedDeltaTime;
             }
 
@@ -74,9 +80,11 @@ public class EnemyController : MonoBehaviour
         }
         else if (distance <= range)
         {
-            // MoveTowards pega a posição atual no primeiro parâmetro, a posição do traget no segundo parâmetro e uma velocidade para o movimento no terceiro parâmetro
-            // É possível adicionar um parâmetro de distancia máxima, que em valores negativos faz o objeto se afastar   
-            transform.position = Vector2.MoveTowards(myPosition, playerPosition, speed * Time.fixedDeltaTime);
+            // MoveTowards pega a posiï¿½ï¿½o atual no primeiro parï¿½metro, a posiï¿½ï¿½o do traget no segundo parï¿½metro e uma velocidade para o movimento no terceiro parï¿½metro
+            // ï¿½ possï¿½vel adicionar um parï¿½metro de distancia mï¿½xima, que em valores negativos faz o objeto se afastar   
+            //transform.position = Vector2.MoveTowards(myPosition, playerPosition, speed * Time.fixedDeltaTime);
+
+            Chase();
         }
 
         
@@ -87,7 +95,7 @@ public class EnemyController : MonoBehaviour
         PlayerController controller = other.GetComponent<PlayerController>();
         if (controller != null)
         {
-            // Se o jogador colidir com o inimigo, chama a função ChangeHealth do PlayerController para reduzir a vida do jogador
+            // Se o jogador colidir com o inimigo, chama a funï¿½ï¿½o ChangeHealth do PlayerController para reduzir a vida do jogador
             controller.ChangeHealth(-1);
         }
     }
@@ -95,5 +103,10 @@ public class EnemyController : MonoBehaviour
     public void DamageSofrido(int amount)
     {
         currentHealth -= amount;
+    }
+
+    public void Chase()
+    {
+        agent.SetDestination(player.transform.position);
     }
 }

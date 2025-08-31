@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9121247009425065807}
   - component: {fileID: 6502972178393242633}
   - component: {fileID: 1298230756030193080}
+  - component: {fileID: -6521350817351458090}
   m_Layer: 0
   m_Name: SlimeWater
   m_TagString: Untagged
@@ -156,7 +157,7 @@ MonoBehaviour:
   vertical: 0
   PatrolTime: 1
   healthMax: 3
-  player: {fileID: 0}
+  player: {fileID: 7834701516956079376, guid: c13d8595e90bb8845bf5ccde90b9535e, type: 3}
 --- !u!50 &6502972178393242633
 Rigidbody2D:
   serializedVersion: 5
@@ -230,3 +231,25 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
+--- !u!195 &-6521350817351458090
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2232156345490527329}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.16
+  m_Speed: 0.8
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.64
+  m_BaseOffset: 0.32
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
