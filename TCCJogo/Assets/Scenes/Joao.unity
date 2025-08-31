@@ -149,6 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7280211321d084c9223bb95730f4ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayTime: 4
+  dialogo: {fileID: 0}
 --- !u!114 &560588144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,9 +168,13 @@ MonoBehaviour:
   sourceAsset: {fileID: 9197481963319205126, guid: 92232554bff7d264ea003e56b71ce116,
     type: 3}
   m_SortingOrder: 0
+  m_Position: 0
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
   m_WorldSpaceHeight: 1080
+  m_PivotReferenceSize: 0
+  m_Pivot: 0
+  m_WorldSpaceCollider: {fileID: 0}
 --- !u!4 &560588145
 Transform:
   m_ObjectHideFlags: 0
@@ -412,7 +418,6 @@ MonoBehaviour:
   m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
-  m_Version: 2
   m_TaaSettings:
     m_Quality: 3
     m_FrameInfluence: 0.1
@@ -420,6 +425,7 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!81 &887245664
 AudioListener:
   m_ObjectHideFlags: 0
