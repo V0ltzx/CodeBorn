@@ -6,4 +6,5 @@
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:Instance template="SignUI" style="position: absolute; top: 70%; left: 10%; right: 10%; bottom: 0%;" />
+    <ui:VisualElement style="flex-grow: 1; position: absolute; height: 130px; width: 130px; top: 25px; left: 14px; background-image: url(&quot;project://database/Assets/Downloads/Fantasy%20Pixel%20Locks%20and%20Keys/PNG/Gold%20key.png?fileID=21300000&amp;guid=0dc562774a1186e44ab0cfc5bfcd6619&amp;type=3#Gold key&quot;);" />
 </ui:UXML>

@@ -1,5 +1,4 @@
 using System;
-
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -21,9 +20,7 @@ public class PlayerController : MonoBehaviour
     // Variáveis padrão
     Vector2 move;
     public float speed = 0.1f;
-    float FacingDirection = 0.3f; // O personagem inicialmente está virado para a direita
-
-
+   
     //a variavel health é uma propriedade que retorna o valor de currentHealth, assim permitindo o acesso ao valor do currentHealth sem a possibilidade de alterá-lo diretamente
     public int health { get { return currentHealth; } }
     public int maxHealth = 5;
@@ -41,10 +38,11 @@ public class PlayerController : MonoBehaviour
     public bool InvinciHeal { get { return isInvincibleHeal; } }   
     float damageCooldownHeal;
 
-    // Cooldown de ataque
+    // Variáveis de ataque
     public float timeAttack = 1f;
     float attackCooldown;
     bool canAttack;
+    public string Elemento = "";
     
 
     void Start()
@@ -143,8 +141,6 @@ public class PlayerController : MonoBehaviour
 
     void Flip()
     {
-        FacingDirection *= -1; // Inverte a direção de face do personagem
-        
         // O componente localscale n pode ser alterado individualmente, por isso mudamos oq nos queremos e mantemos o resto do scale do personagem
         transform.localScale = new Vector3(-1 * transform.localScale.x, transform.localScale.y, transform.localScale.z); // Altera a escala do personagem para inverter a direção
     }
@@ -209,10 +205,31 @@ public class PlayerController : MonoBehaviour
         { 
             Vector2 spawnOffset = new Vector2( 0.0f, 0.1f);
         
-            GameObject projectileObject = Instantiate(attackPrefab, hitbox + spawnOffset, Quaternion.identity);
+            GameObject projectileObject = Instantiate(attackPrefab, hitbox + spawnOffset, Quaternion.identity); 
         }
-        anim.SetTrigger("Attack");
-        
+       
+        if (Elemento == "Fire" || Elemento == "fire")
+        {
+            anim.SetTrigger("AttackFire");
+        }
+        else if (Elemento == "Water" || Elemento == "water")
+        {
+            anim.SetTrigger("AttackWater");
+        }
+        else if (Elemento == "Light" || Elemento == "light")
+        {
+            anim.SetTrigger("AttackLight");
+        }
+        else if (Elemento == "Dark" || Elemento == "dark")
+        {
+            anim.SetTrigger("AttackDark");
+        }
+        else
+        {
+          anim.SetTrigger("Attack");
+        }
+
+
     }
 
     void InteractAction()
