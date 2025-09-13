@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7544705386175783858}
   - component: {fileID: 4427635977640182207}
   - component: {fileID: 4641801255942778986}
-  - component: {fileID: 1101784313393433809}
   - component: {fileID: 5618695626058717458}
   - component: {fileID: 3021323137889638462}
+  - component: {fileID: 4739952412934408991}
   m_Layer: 0
   m_Name: ScorpionFire
   m_TagString: Untagged
@@ -140,23 +140,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.32, y: 0.33393055}
   m_EdgeRadius: 0
---- !u!114 &1101784313393433809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5285319449801112771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35805e31f1e097a46b9fa079f57e6268, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1.5
-  vertical: 0
-  PatrolTime: 1
-  healthMax: 2
-  player: {fileID: 0}
 --- !u!50 &5618695626058717458
 Rigidbody2D:
   serializedVersion: 5
@@ -230,3 +213,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
+--- !u!114 &4739952412934408991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5285319449801112771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35805e31f1e097a46b9fa079f57e6268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  speed: 1.5
+  vertical: 0
+  PatrolTime: 2
+  healthMax: 2
+  player: {fileID: 0}
+  fraqueza: water

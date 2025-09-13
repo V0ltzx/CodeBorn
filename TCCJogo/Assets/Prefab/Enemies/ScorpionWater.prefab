@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3933276470375064975}
   - component: {fileID: 5040052839181217827}
   - component: {fileID: 64642498781987404}
-  - component: {fileID: 5916400817859537978}
   - component: {fileID: 2652937576042418015}
   - component: {fileID: -1291705762105154809}
+  - component: {fileID: 6959619583608995995}
   m_Layer: 0
   m_Name: ScorpionWater
   m_TagString: Untagged
@@ -140,23 +140,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.32, y: 0.33393055}
   m_EdgeRadius: 0
---- !u!114 &5916400817859537978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 788538187147292998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35805e31f1e097a46b9fa079f57e6268, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1.5
-  vertical: 0
-  PatrolTime: 1
-  healthMax: 2
-  player: {fileID: 0}
 --- !u!50 &2652937576042418015
 Rigidbody2D:
   serializedVersion: 5
@@ -230,3 +213,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
+--- !u!114 &6959619583608995995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788538187147292998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35805e31f1e097a46b9fa079f57e6268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  speed: 1.5
+  vertical: 0
+  PatrolTime: 2
+  healthMax: 2
+  player: {fileID: 0}
+  fraqueza: fire

@@ -12,9 +12,10 @@ public class EnemyController : MonoBehaviour
     int direction = 1;
     public int healthMax;
     int currentHealth;
-    public GameObject player;
+    public PlayerController player;
     float range = 1.0f;
-    float distance;
+    float distance; 
+    public string fraqueza;
 
     
 
@@ -23,8 +24,7 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         Timer = PatrolTime;
         currentHealth = healthMax;
-
-        
+        player = player.GetComponent<PlayerController>();
     }
 
     void Update()
@@ -94,6 +94,9 @@ public class EnemyController : MonoBehaviour
 
     public void DamageSofrido(int amount)
     {
-        currentHealth -= amount;
+       if(player.Elemento == fraqueza)
+        {
+            currentHealth -= amount;
+        }
     }
 }

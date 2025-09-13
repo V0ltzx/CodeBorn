@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8626037498845612055}
   - component: {fileID: 1039690623025630335}
   - component: {fileID: 3200004622838653482}
-  - component: {fileID: 7215081696544324316}
   - component: {fileID: 173729783134777988}
   - component: {fileID: 7724704229990469251}
+  - component: {fileID: 997762945953218830}
   m_Layer: 0
   m_Name: SlimeFire
   m_TagString: Untagged
@@ -140,23 +140,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.32, y: 0.33393055}
   m_EdgeRadius: 0
---- !u!114 &7215081696544324316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7366822781541041523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35805e31f1e097a46b9fa079f57e6268, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1.2
-  vertical: 0
-  PatrolTime: 1
-  healthMax: 3
-  player: {fileID: 0}
 --- !u!50 &173729783134777988
 Rigidbody2D:
   serializedVersion: 5
@@ -230,3 +213,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
+--- !u!114 &997762945953218830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7366822781541041523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35805e31f1e097a46b9fa079f57e6268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  speed: 1.2
+  vertical: 0
+  PatrolTime: 2
+  healthMax: 2
+  player: {fileID: 0}
+  fraqueza: water

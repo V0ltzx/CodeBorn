@@ -9,6 +9,7 @@ public class UI_Code : MonoBehaviour
     public PlayerController playerController;
     public TrapController[] trapController;
 
+
     // 1 - Personagem, 2 - Chave, 3 - Armadilha 0 - Nenhum
     int Selecionado = 0;
 
@@ -20,9 +21,16 @@ public class UI_Code : MonoBehaviour
     string oriCha = "using UnityEngine;\r\n\r\npublic class SenhaChave : MonoBehaviour\r\n{\r\n\tstring Senha;\r\n\tint UsosSenha;\r\n\r\n\tvoid Start()\r\n\t{\r\n\t\tSenha = \"\";\r\n\t\tUsosSenha = 1;\r\n\t}\r\n\r\n\tvoid Update()\r\n\t{\r\n\t\tIf(Input.GetKeyDown(KeyCode.E))\r\n\t\t{\r\n\t\t\tUsosSenha -= 1;\r\n\t\t\tif(UsoSenha == 0)\r\n\t\t\t{\r\n\t\t\t\tSenha = \"\";\r\n\t\t\t}\r\n\t\t}\t\r\n\t}\r\n}";
     string oriArm = "using UnityEngine;\r\n\r\npublic class SwitchArmadilha : MonoBehaviour\r\n{\r\n\tbool ArmadilhaOn;\r\n\tint DistanciaPlayer;\r\n\t\r\n\tvoid Update()\r\n\t{\r\n\t\tif(DistanciaPlayer < 1)\r\n\t\t{\r\n\t\t\tArmadilhaOn = true;\t\r\n\t\t}\r\n\t}\r\n}";
 
+    //Chave
+    string Senha;
+    int UsosSenha;
+
     void Start()
     {
         Tela_code.SetActive(false);
+
+        Senha = "";
+        UsosSenha = 1;
 
         codePer = oriPer;
         codeCha = oriCha;
@@ -39,9 +47,27 @@ public class UI_Code : MonoBehaviour
         }
         if (isActive && Input.GetKeyDown(KeyCode.Escape))
         {
-            Time.timeScale = 1f;
             Tela_code.SetActive(false);
             isActive = false;
+        }
+        
+        if (Selecionado == 1)
+        {
+            codePer = inputField.text;
+        }
+        else if (Selecionado == 2)
+        {
+            codeCha = inputField.text;
+        }
+        else if (Selecionado == 3)
+        {
+            codeArm = inputField.text;
+        }
+
+        if (UsosSenha <= 0)
+        {
+            Senha = "";
+            codeCha = oriCha;
         }
     }
 
@@ -67,38 +93,64 @@ public class UI_Code : MonoBehaviour
     }
     public void Run()
     {
-
-
         //Pesonagem
-        if(Selecionado == 1)
+        if (Selecionado == 1)
         {
-            codePer = inputField.text;
-            if (codePer.Contains("fire;") || codePer.Contains("Fire;"))
+
+            if (codePer.Contains("fire") || codePer.Contains("Fire"))
             {
                 playerController.Elemento = "fire";
             }
-            if (codePer.Contains("dark;") || codePer.Contains("Dark;"))
+            if (codePer.Contains("dark") || codePer.Contains("Dark"))
             {
                 playerController.Elemento = "dark";
             }
-            if (codePer.Contains("light;") || codePer.Contains("Light;"))
+            if (codePer.Contains("light") || codePer.Contains("Light"))
             {
                 playerController.Elemento = "light";
             }
-            if (codePer.Contains("water;") || codePer.Contains("Water;"))
+            if (codePer.Contains("water") || codePer.Contains("Water"))
             {
                 playerController.Elemento = "water";
             }
         }
         //Chave
-        else if(Selecionado == 2)
+        else if (Selecionado == 2)
         {
+            // colocar \" \" faz a string reconher a aspas como parte do texto
+
+            if (codeCha.Contains("Senha\"Alguma senha\";"))
+            {
+                Senha = "Alguma senha";
+            }
+            else if (codeCha.Contains("Senha\"Outra senha\";"))
+            {
+                Senha = "Outra senha";
+            }
+            else if (codeCha.Contains("Senha\"Senha123\";"))
+            {
+                Senha = "Senha123";
+            }
+
+            if (codeCha.Contains("UsosSenha = 1;"))
+            {
+                UsosSenha = 1;
+            }
+            else if (codeCha.Contains("UsosSenha = 2;"))
+            {
+                UsosSenha = 2;
+            }
+            else if (codeCha.Contains("UsosSenha = 3;"))
+            {
+                UsosSenha = 3;
+            }
             
         }
+
         //Armadilha
-        else if(Selecionado == 3)
+        else if (Selecionado == 3)
         {
-            codeArm = inputField.text;
+
             if (codeArm.Contains("ArmadilhaOn = false;"))
             {
                 foreach (var trap in trapController)
@@ -109,7 +161,7 @@ public class UI_Code : MonoBehaviour
         }
         else
         {
-            inputField.text= "Nenhum objeto selecionado";
+            inputField.text = "Nenhum objeto selecionado";
         }
     }
 
