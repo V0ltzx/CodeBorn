@@ -6,10 +6,12 @@ public class TrapController : MonoBehaviour
 
     public bool enabletrap = true;
     Animator anim;
+    BoxCollider2D cd;
     void Awake() // é chamado quando o script é carregado
     {
         anim = GetComponent<Animator>(); // pegar o componente animator
         anim.SetBool("IsActive", false); // começa como false (traps desativadas)
+        cd = GetComponent<BoxCollider2D>();
     }
  
 
@@ -17,6 +19,7 @@ public class TrapController : MonoBehaviour
     public void disable_trap()
     {
         enabletrap = false;
+        cd.enabled = false;
         anim.SetBool("IsActive", false);
     }
 
