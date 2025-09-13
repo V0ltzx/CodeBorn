@@ -20,7 +20,6 @@ public class Attack : MonoBehaviour
         {
             enemy.DamageSofrido(damage);
         }
-        Debug.Log("Projectile collision with " + other.gameObject);
         Destroy(gameObject);
     }
 

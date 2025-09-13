@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 734007880894009107}
   - component: {fileID: 1477685267620216774}
   - component: {fileID: 994958293541156150}
-  - component: {fileID: 9121247009425065807}
   - component: {fileID: 6502972178393242633}
   - component: {fileID: 1298230756030193080}
+  - component: {fileID: 1134912394512560789}
   m_Layer: 0
   m_Name: SlimeWater
   m_TagString: Untagged
@@ -140,23 +140,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.32, y: 0.33393055}
   m_EdgeRadius: 0
---- !u!114 &9121247009425065807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2232156345490527329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35805e31f1e097a46b9fa079f57e6268, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1.2
-  vertical: 0
-  PatrolTime: 1
-  healthMax: 3
-  player: {fileID: 0}
 --- !u!50 &6502972178393242633
 Rigidbody2D:
   serializedVersion: 5
@@ -230,3 +213,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
+--- !u!114 &1134912394512560789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2232156345490527329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35805e31f1e097a46b9fa079f57e6268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  speed: 1.2
+  vertical: 0
+  PatrolTime: 2
+  healthMax: 3
+  player: {fileID: 0}
+  fraqueza: fire

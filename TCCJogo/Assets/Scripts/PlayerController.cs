@@ -224,9 +224,9 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetTrigger("AttackDark");
         }
-        else
+        else if(Elemento == "")
         {
-          anim.SetTrigger("Attack");
+            anim.SetTrigger("Attack");
         }
 
 
