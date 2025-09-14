@@ -17,7 +17,7 @@ public class UI_Code : MonoBehaviour
     string codeCha = "";
     string codeArm = "";
 
-    string oriPer = "using System;\r\nusing UnityEngine;\r\nusing UnityEngine.EventSystems;\r\nusing UnityEngine.InputSystem;\r\n\r\npublic class player\r\n{\r\n    string elemento;\r\n\r\n    int vidaMaxima = 5;\r\n    speed = 5;\r\n    int vidaAtual;\r\n    bool podeAtacar = true;\r\n    int cooldownAtaque = 0;\r\n\r\n    void start()\r\n    {\r\n        vidaAtual = vidaMaxima;\r\n    }\r\n\r\n\r\n    void update()\r\n    {\r\n\r\n    // \"Horizontal\" lê as setas ou A/D no teclado\r\n            float moverX = Input.GetKey(\"Horizontal\");\r\n\r\n        // \"Vertical\" lê as setas ou W/S no teclado\r\n            float moverY = Input.GetKey(\"Vertical\");\r\n\r\n        if (Input.GetKeyDown(KeyCode.Mouse0))\r\n            {\r\n                    Atacar();\r\n            }\r\n\r\n        // Interagir com \"E\"\r\n            if (Input.GetKeyDown(KeyCode.E))\r\n               {\r\n                    Interagir();\r\n            }\r\n}\r\n\r\n    void Atacar()\r\n    {\r\n        animationAttack.Start(elemento);\r\n        hitbox.appear(damage == 1);\r\n    }";
+    string oriPer = "using System;\r\nusing UnityEngine;\r\nusing UnityEngine.EventSystems;\r\nusing UnityEngine.InputSystem;\r\n\r\npublic class player\r\n{\r\n    string elemento;\r\n\r\n    int vidaMaxima = 5;\r\n    speed = 5;\r\n    int vidaAtual;\r\n    bool podeAtacar = true;\r\n    int cooldownAtaque = 0;\r\n\r\n    void start()\r\n    {\r\n        vidaAtual = vidaMaxima;\r\n    }\r\n\r\n\r\n    void update()\r\n    {\r\n\r\n    // \"Horizontal\" lÃª as setas ou A/D no teclado\r\n            float moverX = Input.GetKey(\"Horizontal\");\r\n\r\n        // \"Vertical\" lÃª as setas ou W/S no teclado\r\n            float moverY = Input.GetKey(\"Vertical\");\r\n\r\n        if (Input.GetKeyDown(KeyCode.Mouse0))\r\n            {\r\n                    Atacar();\r\n            }\r\n\r\n        // Interagir com \"E\"\r\n            if (Input.GetKeyDown(KeyCode.E))\r\n               {\r\n                    Interagir();\r\n            }\r\n}\r\n\r\n    void Atacar()\r\n    {\r\n        animationAttack.Start(elemento);\r\n        hitbox.appear(damage == 1);\r\n    }";
     string oriCha = "using UnityEngine;\r\n\r\npublic class SenhaChave : MonoBehaviour\r\n{\r\n\tstring Senha;\r\n\tint UsosSenha;\r\n\r\n\tvoid Start()\r\n\t{\r\n\t\tSenha = \"\";\r\n\t\tUsosSenha = 1;\r\n\t}\r\n\r\n\tvoid Update()\r\n\t{\r\n\t\tIf(Input.GetKeyDown(KeyCode.E))\r\n\t\t{\r\n\t\t\tUsosSenha -= 1;\r\n\t\t\tif(UsoSenha == 0)\r\n\t\t\t{\r\n\t\t\t\tSenha = \"\";\r\n\t\t\t}\r\n\t\t}\t\r\n\t}\r\n}";
     string oriArm = "using UnityEngine;\r\n\r\npublic class SwitchArmadilha : MonoBehaviour\r\n{\r\n\tbool ArmadilhaOn;\r\n\tint DistanciaPlayer;\r\n\t\r\n\tvoid Update()\r\n\t{\r\n\t\tif(DistanciaPlayer < 1)\r\n\t\t{\r\n\t\t\tArmadilhaOn = true;\t\r\n\t\t}\r\n\t}\r\n}";
 
@@ -41,7 +41,7 @@ public class UI_Code : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            Time.timeScale = 0.01f;
+            Time.timeScale = 0f;
             Tela_code.SetActive(true);
             isActive = true;
         }
