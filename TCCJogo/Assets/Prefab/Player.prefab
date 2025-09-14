@@ -19,7 +19,7 @@ GameObject:
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4796084982153792572
 Transform:
@@ -221,7 +221,6 @@ MonoBehaviour:
   timeInvincible: 0.7
   timeInvincibleHeal: 2
   timeAttack: 0.7
-  Elemento: 
 --- !u!50 &9167402519161677072
 Rigidbody2D:
   serializedVersion: 5
@@ -313,7 +312,7 @@ GameObject:
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7229128742280231916
 Transform:

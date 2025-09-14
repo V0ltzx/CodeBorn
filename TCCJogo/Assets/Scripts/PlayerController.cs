@@ -22,9 +22,9 @@ public class PlayerController : MonoBehaviour
     public float speed = 0.1f;
    
     //a variavel health é uma propriedade que retorna o valor de currentHealth, assim permitindo o acesso ao valor do currentHealth sem a possibilidade de alterá-lo diretamente
-    public int health { get { return currentHealth; } }
+    static public int health { get { return currentHealth; } }
     public int maxHealth = 5;
-    int currentHealth;
+    static int currentHealth;
     
 
     // Timer de invencibilidade
@@ -42,8 +42,20 @@ public class PlayerController : MonoBehaviour
     public float timeAttack = 1f;
     float attackCooldown;
     bool canAttack;
-    public string Elemento = "";
-    
+    static public string Elemento = "";
+
+    // Something
+    private static bool iniciado = false;
+
+    private void Awake()
+    {
+        if (!iniciado)
+        {
+            currentHealth = maxHealth;
+            iniciado = true;
+        }
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {
@@ -52,10 +64,6 @@ public class PlayerController : MonoBehaviour
         Attack.Enable();
         Interact.Enable();
         rb = GetComponent<Rigidbody2D>();
-
-        currentHealth = maxHealth;
-
-        
 
         //QualitySettings.vSyncCount = 0;
         //Application.targetFrameRate = 10;

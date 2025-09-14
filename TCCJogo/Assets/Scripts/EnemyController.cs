@@ -94,7 +94,7 @@ public class EnemyController : MonoBehaviour
 
     public void DamageSofrido(int amount)
     {
-       if(player.Elemento == fraqueza)
+       if(PlayerController.Elemento == fraqueza)
         {
             currentHealth -= amount;
         }

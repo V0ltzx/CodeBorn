@@ -13,7 +13,7 @@ public class HealthCollectibles : MonoBehaviour
 
         // É necessario referenciar a variavel controller que esta recebendo o script do outro objeto sempre 
         // que quiser acessar uma variavel ou função do script PlayerController
-        if (controller != null && controller.health < controller.maxHealth && controller.InvinciHeal != true)
+        if (controller != null && PlayerController.health < controller.maxHealth && controller.InvinciHeal != true)
         {
  
           // Assina um valor a variavel da função changeHealth, que é definida na classe PlayerController
