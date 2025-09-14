@@ -9,8 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: e4fb9b2ba281cb2459660fa1ffa5c07a
   - enabled: 1
-    path: Assets/Scenes/Mapa.unity
-    guid: 89bfd67d8bd02b3439adbc2046d21092
+    path: Assets/Scenes/Jogo.unity
+    guid: d52ba66a72e17bc4bbaa420fd4907bc8
+  - enabled: 1
+    path: Assets/Scenes/Sala1.unity
+    guid: 6ec5f85f057f7d34b84e342da3aa1a9d
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f,
       type: 2}

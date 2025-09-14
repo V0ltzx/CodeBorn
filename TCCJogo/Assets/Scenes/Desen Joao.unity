@@ -20760,6 +20760,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 199155591}
+    - target: {fileID: 6923936579011710488, guid: e4bcdceaef5ab4948a810bf6bfd8e144,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Armadilha
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923936579011710488, guid: e4bcdceaef5ab4948a810bf6bfd8e144,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI_Code, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7804204407523406790, guid: e4bcdceaef5ab4948a810bf6bfd8e144,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

@@ -663,7 +663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2010d809e18bee45b21085d89841cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Menu
-  Cena: Mapa
+  Cena: Jogo
 --- !u!1 &1824938954
 GameObject:
   m_ObjectHideFlags: 0
