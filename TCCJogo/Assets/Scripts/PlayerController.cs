@@ -51,6 +51,11 @@ public class PlayerController : MonoBehaviour
 
         //QualitySettings.vSyncCount = 0;
         //Application.targetFrameRate = 10;
+
+        if (GameManager.Instance.position_player != null)
+        {
+            transform.position = GameManager.Instance.position_player;
+        }
     }
 
     // Update is called once per frame

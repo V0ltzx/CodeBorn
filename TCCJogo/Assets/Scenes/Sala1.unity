@@ -414,6 +414,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70478b94e86d25b4eb04035cd29a3e3a, type: 3}
+--- !u!114 &462818602 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 322754409535082352, guid: 70478b94e86d25b4eb04035cd29a3e3a,
+    type: 3}
+  m_PrefabInstance: {fileID: 462818601}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4059cde0356a0c84a88cb38fdc024a58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_Code
 --- !u!1001 &472346479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2653,20 +2665,45 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2882847091979044554, guid: 5808ca7cfa9bad240b1c2c52003f4817,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.7203451
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882847091979044554, guid: 5808ca7cfa9bad240b1c2c52003f4817,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.1271734
+      objectReference: {fileID: 0}
     - target: {fileID: 5055832017381609473, guid: 5808ca7cfa9bad240b1c2c52003f4817,
         type: 3}
       propertyPath: Cena
-      value: Jogo
+      value: Desen Joao
       objectReference: {fileID: 0}
+    - target: {fileID: 5055832017381609473, guid: 5808ca7cfa9bad240b1c2c52003f4817,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1273559749}
     - target: {fileID: 5055832017381609473, guid: 5808ca7cfa9bad240b1c2c52003f4817,
         type: 3}
       propertyPath: ui_code
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 462818602}
     - target: {fileID: 5055832017381609473, guid: 5808ca7cfa9bad240b1c2c52003f4817,
         type: 3}
       propertyPath: NumChave
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5055832017381609473, guid: 5808ca7cfa9bad240b1c2c52003f4817,
+        type: 3}
+      propertyPath: destino.x
+      value: 3.444843
+      objectReference: {fileID: 0}
+    - target: {fileID: 5055832017381609473, guid: 5808ca7cfa9bad240b1c2c52003f4817,
+        type: 3}
+      propertyPath: destino.y
+      value: -0.904
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -15312,9 +15312,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4468144812669000368, guid: ee18a37511c8b7b4a9372b16b0fd3d69,
         type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2000272787}
+    - target: {fileID: 4468144812669000368, guid: ee18a37511c8b7b4a9372b16b0fd3d69,
+        type: 3}
       propertyPath: ui_code
       value: 
       objectReference: {fileID: 2786425894754977664}
+    - target: {fileID: 4468144812669000368, guid: ee18a37511c8b7b4a9372b16b0fd3d69,
+        type: 3}
+      propertyPath: destino.x
+      value: -0.5368928
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468144812669000368, guid: ee18a37511c8b7b4a9372b16b0fd3d69,
+        type: 3}
+      propertyPath: destino.y
+      value: 2.085764
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468144812669000368, guid: ee18a37511c8b7b4a9372b16b0fd3d69,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1551934390}
     - target: {fileID: 8659830963226842447, guid: ee18a37511c8b7b4a9372b16b0fd3d69,
         type: 3}
       propertyPath: m_Name
@@ -22044,6 +22064,7 @@ MonoBehaviour:
   oriArm: "using UnityEngine;\r\n\r\npublic class SwitchArmadilha : MonoBehaviour\r\n{\r\n\tbool
     ArmadilhaOn;\r\n\tint DistanciaPlayer;\r\n\t\r\n\tvoid Update()\r\n\t{\r\n\t\tif(DistanciaPlayer
     < 1)\r\n\t\t{\r\n\t\t\tArmadilhaOn = true;\t\r\n\t\t}\r\n\t}\r\n}"
+  position_player: {x: 0, y: 0}
 --- !u!4 &1551934391
 Transform:
   m_ObjectHideFlags: 0

@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour
     public string oriCha = "using UnityEngine;\r\n\r\npublic class SenhaChave : MonoBehaviour\r\n{\r\n\tstring Senha;\r\n\tint UsosSenha;\r\n\r\n\tvoid Start()\r\n\t{\r\n\t\tSenha = \"\";\r\n\t\tUsosSenha = 1;\r\n\t}\r\n\r\n\tvoid Update()\r\n\t{\r\n\t\tIf(Input.GetKeyDown(KeyCode.E))\r\n\t\t{\r\n\t\t\tUsosSenha -= 1;\r\n\t\t\tif(UsoSenha == 0)\r\n\t\t\t{\r\n\t\t\t\tSenha = \"\";\r\n\t\t\t}\r\n\t\t}\t\r\n\t}\r\n}";
     public string oriArm = "using UnityEngine;\r\n\r\npublic class SwitchArmadilha : MonoBehaviour\r\n{\r\n\tbool ArmadilhaOn;\r\n\tint DistanciaPlayer;\r\n\t\r\n\tvoid Update()\r\n\t{\r\n\t\tif(DistanciaPlayer < 1)\r\n\t\t{\r\n\t\t\tArmadilhaOn = true;\t\r\n\t\t}\r\n\t}\r\n}";
 
+    //posição player
+
+    public Vector2 position_player;
+
 
     private void Awake()
     {
@@ -38,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        position_player = new Vector2(-0.5f, -1.7f);
         codePer = oriPer;
         codeCha = oriCha;
         codeArm = oriArm;
@@ -61,5 +66,6 @@ public class GameManager : MonoBehaviour
         codeCha = oriCha;
         codeArm = oriArm;
     }
+ 
 }
 
