@@ -13,14 +13,6 @@ public class UI_Code : MonoBehaviour
     // 1 - Personagem, 2 - Chave, 3 - Armadilha 0 - Nenhum
     int Selecionado = 0;
 
-    static string codePer = "";
-    static public string codeCha = "";
-    static string codeArm = "";
-
-    string oriPer = "using System;\r\nusing UnityEngine;\r\nusing UnityEngine.EventSystems;\r\nusing UnityEngine.InputSystem;\r\n\r\npublic class player\r\n{\r\n    string elemento;\r\n\r\n    int vidaMaxima = 5;\r\n    speed = 5;\r\n    int vidaAtual;\r\n    bool podeAtacar = true;\r\n    int cooldownAtaque = 0;\r\n\r\n    void start()\r\n    {\r\n        vidaAtual = vidaMaxima;\r\n    }\r\n\r\n\r\n    void update()\r\n    {\r\n\r\n    // \"Horizontal\" lê as setas ou A/D no teclado\r\n            float moverX = Input.GetKey(\"Horizontal\");\r\n\r\n        // \"Vertical\" lê as setas ou W/S no teclado\r\n            float moverY = Input.GetKey(\"Vertical\");\r\n\r\n        if (Input.GetKeyDown(KeyCode.Mouse0))\r\n            {\r\n                    Atacar();\r\n            }\r\n\r\n        // Interagir com \"E\"\r\n            if (Input.GetKeyDown(KeyCode.E))\r\n               {\r\n                    Interagir();\r\n            }\r\n}\r\n\r\n    void Atacar()\r\n    {\r\n        animationAttack.Start(elemento);\r\n        hitbox.appear(damage == 1);\r\n    }";
-    public string oriCha = "using UnityEngine;\r\n\r\npublic class SenhaChave : MonoBehaviour\r\n{\r\n\tstring Senha;\r\n\tint UsosSenha;\r\n\r\n\tvoid Start()\r\n\t{\r\n\t\tSenha = \"\";\r\n\t\tUsosSenha = 1;\r\n\t}\r\n\r\n\tvoid Update()\r\n\t{\r\n\t\tIf(Input.GetKeyDown(KeyCode.E))\r\n\t\t{\r\n\t\t\tUsosSenha -= 1;\r\n\t\t\tif(UsoSenha == 0)\r\n\t\t\t{\r\n\t\t\t\tSenha = \"\";\r\n\t\t\t}\r\n\t\t}\t\r\n\t}\r\n}";
-    string oriArm = "using UnityEngine;\r\n\r\npublic class SwitchArmadilha : MonoBehaviour\r\n{\r\n\tbool ArmadilhaOn;\r\n\tint DistanciaPlayer;\r\n\t\r\n\tvoid Update()\r\n\t{\r\n\t\tif(DistanciaPlayer < 1)\r\n\t\t{\r\n\t\t\tArmadilhaOn = true;\t\r\n\t\t}\r\n\t}\r\n}";
-
     //Chave
     public string Senha;
     public int UsosSenha;
@@ -29,10 +21,6 @@ public class UI_Code : MonoBehaviour
     {
         Senha = "";
         UsosSenha = 1;
-
-        codePer = oriPer;
-        codeCha = oriCha;
-        codeArm = oriArm;
     }
     void Start()
     {
@@ -55,21 +43,15 @@ public class UI_Code : MonoBehaviour
         
         if (Selecionado == 1)
         {
-            codePer = inputField.text;
+            GameManager.codePer = inputField.text;
         }
         else if (Selecionado == 2)
         {
-            codeCha = inputField.text;
+            GameManager.codeCha = inputField.text;
         }
         else if (Selecionado == 3)
         {
-            codeArm = inputField.text;
-        }
-
-        if (UsosSenha <= 0)
-        {
-            Senha = "";
-            codeCha = oriCha;
+            GameManager.codeArm = inputField.text;
         }
     }
 
@@ -77,43 +59,42 @@ public class UI_Code : MonoBehaviour
     {
         Selecionado = 1;
         inputField.text = ""; // Limpa antes de carregar
-        inputField.text = codePer;
+        inputField.text = GameManager.codePer;
     }
 
     public void Chave()
     {
         Selecionado = 2;
         inputField.text = ""; // Limpa antes de carregar
-        inputField.text = codeCha;
+        inputField.text = GameManager.codeCha;
     }
 
     public void Armadilha()
     {
         Selecionado = 3;
         inputField.text = ""; // Limpa antes de carregar
-        inputField.text = codeArm;
+        inputField.text = GameManager.codeArm;
     }
     public void Run()
     {
         //Pesonagem
         if (Selecionado == 1)
         {
-
-            if (codePer.Contains("fire") || codePer.Contains("Fire"))
+            if (GameManager.codePer.Contains("fire") || GameManager.codePer.Contains("Fire"))
             {
-                PlayerController.Elemento = "fire";
+                GameManager.Instance.Elemento = "fire";
             }
-            if (codePer.Contains("dark") || codePer.Contains("Dark"))
+            if (GameManager.codePer.Contains("dark") || GameManager.codePer.Contains("Dark"))
             {
-                PlayerController.Elemento = "dark";
+                GameManager.Instance.Elemento = "dark";
             }
-            if (codePer.Contains("light") || codePer.Contains("Light"))
+            if (GameManager.codePer.Contains("light") || GameManager.codePer.Contains("Light"))
             {
-                PlayerController.Elemento = "light";
+                GameManager.Instance.Elemento = "light";
             }
-            if (codePer.Contains("water") || codePer.Contains("Water"))
+            if (GameManager.codePer.Contains("water") || GameManager.codePer.Contains("Water"))
             {
-                PlayerController.Elemento = "water";
+                GameManager.Instance.Elemento = "water";
             }
         }
         //Chave
@@ -121,28 +102,28 @@ public class UI_Code : MonoBehaviour
         {
             // colocar \" \" faz a string reconher a aspas como parte do texto
 
-            if (codeCha.Contains("1234"))
+            if (GameManager.codeCha.Contains("1234"))
             {
                 Senha = "1234";
             }
-            else if (codeCha.Contains("4321"))
+            else if (GameManager.codeCha.Contains("4321"))
             {
                 Senha = "4321";
             }
-            else if (codeCha.Contains("2486"))
+            else if (GameManager.codeCha.Contains("2486"))
             {
                 Senha = "2486";
             }
 
-            if (codeCha.Contains("UsosSenha = 1;"))
+            if (GameManager.codeCha.Contains("UsosSenha = 1;"))
             {
                 UsosSenha = 1;
             }
-            else if (codeCha.Contains("UsosSenha = 2;"))
+            else if (GameManager.codeCha.Contains("UsosSenha = 2;"))
             {
                 UsosSenha = 2;
             }
-            else if (codeCha.Contains("UsosSenha = 3;"))
+            else if (GameManager.codeCha.Contains("UsosSenha = 3;"))
             {
                 UsosSenha = 3;
             }
@@ -153,7 +134,7 @@ public class UI_Code : MonoBehaviour
         else if (Selecionado == 3)
         {
 
-            if (codeArm.Contains("ArmadilhaOn = false;"))
+            if (GameManager.codeArm.Contains("ArmadilhaOn = false;"))
             {
                 foreach (var trap in trapController)
                 {

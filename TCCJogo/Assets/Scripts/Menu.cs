@@ -13,6 +13,8 @@ public class Menu : MonoBehaviour
     public void Play()
     {
         SceneManager.LoadScene(Cena);
+        GameManager.Instance.Resethealth();
+        GameManager.Instance.ResetCode();
     }
     public void Quit()
     {

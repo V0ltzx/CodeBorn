@@ -14,7 +14,7 @@ public class UI_Morte : MonoBehaviour
     }
     void Update()
     {
-       if (PlayerController.health <= 0)
+       if (GameManager.health <= 0)
         {
             GameOver();
         }

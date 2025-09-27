@@ -24,7 +24,7 @@ public class room_change : MonoBehaviour
             {
                 if (ui_code.Senha == Chave && ui_code.UsosSenha == NumChave)
                 {
-                    UI_Code.codeCha = ui_code.oriCha;
+                    GameManager.codeCha = GameManager.Instance.oriCha;
                     SceneManager.LoadScene(Cena);
                 }
                 else

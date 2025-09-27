@@ -10,7 +10,7 @@ public class HealZone : MonoBehaviour
         if (controller != null)
         {
             // Check if the player is not at max health before healing
-            if (PlayerController.health < controller.maxHealth)
+            if (GameManager.health < GameManager.maxHealth)
             {
                 controller.ChangeHealth(Heal); 
             }
