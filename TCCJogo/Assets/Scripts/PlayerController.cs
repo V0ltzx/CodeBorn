@@ -21,12 +21,6 @@ public class PlayerController : MonoBehaviour
     Vector2 move;
     public float speed = 0.1f;
    
-    //a variavel health é uma propriedade que retorna o valor de currentHealth, assim permitindo o acesso ao valor do currentHealth sem a possibilidade de alterá-lo diretamente
-    static public int health { get { return currentHealth; } }
-    public int maxHealth = 5;
-    static int currentHealth;
-    
-
     // Timer de invencibilidade
     public float timeInvincible = 1.0f;
     float damageCooldown;
@@ -45,17 +39,7 @@ public class PlayerController : MonoBehaviour
     static public string Elemento = "";
 
     // Something
-    private static bool iniciado = false;
 
-    private void Awake()
-    {
-        if (!iniciado)
-        {
-            currentHealth = maxHealth;
-            iniciado = true;
-        }
-        DontDestroyOnLoad(gameObject);
-    }
 
     void Start()
     {
@@ -74,6 +58,7 @@ public class PlayerController : MonoBehaviour
     {
         // criação de uma variavel vector2 para Ler o valor do input de movimento, que é um value e o colocando em um Vector2 (x,y)
         move = MoveAction.ReadValue<Vector2>();
+        Elemento = GameManager.Instance.Elemento;
         //Debug.Log(move);
         // Criação de uma variavel Vector2 para guardar a posição atual do objeto (guardado na unity na parte de position do componente transform,
         // e somando o movimento (move) multiplicado pela velocidade (speed)
@@ -124,6 +109,8 @@ public class PlayerController : MonoBehaviour
         {
             InteractAction(); // Chama a função InteractAction quando o botão de interação é pressionado
         }
+
+        UIHandler.instance.SetHealthValue(GameManager.currentHealth / (float)GameManager.maxHealth);
     }
 
     void FixedUpdate()
@@ -183,11 +170,7 @@ public class PlayerController : MonoBehaviour
 
         // restringe a uma faixa fixa de valores uma variavel, o primeiro valor (currenthealt + amount) é o valor que será restringido,
         // o segundo valor é o valor mínimo (0) e o terceiro é o valor máximo (maxHealth)
-        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        Debug.Log("Current Health: " + currentHealth);
-        UIHandler.instance.SetHealthValue(currentHealth / (float)maxHealth);
-        
-
+        GameManager.currentHealth = Mathf.Clamp(GameManager.currentHealth + amount, 0, GameManager.maxHealth);
     }
 
     void Swing()
