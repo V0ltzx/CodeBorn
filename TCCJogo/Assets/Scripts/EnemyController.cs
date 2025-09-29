@@ -17,7 +17,9 @@ public class EnemyController : MonoBehaviour
     float distance; 
     public string fraqueza;
 
-    
+
+    private bool Stun = false;
+    [SerializeField] float StunTime = 1f;
 
     void Start()
     {
@@ -29,7 +31,15 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-
+        if (Stun)
+        {
+            // retira por frame, quanto tempo um frame dura, essencialmente contando o tempo que o inimgio falta para não estar stunado
+            StunTime -= Time.deltaTime;
+            if (StunTime < 0)
+            {
+                Stun = false;
+            }
+        }
 
         Timer -= Time.deltaTime;
         if (Timer < 0)
@@ -57,29 +67,30 @@ public class EnemyController : MonoBehaviour
         // Declara uma variável Vector2 para armazenar a posição atual do Rigidbody2D do inimigo
         Vector2 position = rb.position;
 
-        if (distance > range)
+        if (!Stun)
         {
-            if (vertical == false)
+            if (distance > range)
             {
-                // Pega o valor x da posição atual e adiciona a velocidade multiplicada pelo tempo fixo (Time.fixedDeltaTime) para mover o inimigo horizontalmente
-                position.x = position.x + speed * direction * Time.fixedDeltaTime;
+                if (vertical == false)
+                {
+                    // Pega o valor x da posição atual e adiciona a velocidade multiplicada pelo tempo fixo (Time.fixedDeltaTime) para mover o inimigo horizontalmente
+                    position.x = position.x + speed * direction * Time.fixedDeltaTime;
+                }
+                else
+                {
+                    //Pega o valor y da posição atual e adiciona a velocidade multiplicada pelo tempo fixo (Time.fixedDeltaTime) para mover o inimigo horizontalmente
+                    position.y = position.y + speed * direction * Time.fixedDeltaTime;
+                }
+
+                rb.MovePosition(position);
             }
-            else
+            else if (distance <= range)
             {
-                //Pega o valor y da posição atual e adiciona a velocidade multiplicada pelo tempo fixo (Time.fixedDeltaTime) para mover o inimigo horizontalmente
-                position.y = position.y + speed * direction * Time.fixedDeltaTime;
+                // MoveTowards pega a posição atual no primeiro parâmetro, a posição do traget no segundo parâmetro e uma velocidade para o movimento no terceiro parâmetro
+                // É possível adicionar um parâmetro de distancia máxima, que em valores negativos faz o objeto se afastar   
+                transform.position = Vector2.MoveTowards(myPosition, playerPosition, speed * Time.fixedDeltaTime);
             }
-
-            rb.MovePosition(position);
         }
-        else if (distance <= range)
-        {
-            // MoveTowards pega a posição atual no primeiro parâmetro, a posição do traget no segundo parâmetro e uma velocidade para o movimento no terceiro parâmetro
-            // É possível adicionar um parâmetro de distancia máxima, que em valores negativos faz o objeto se afastar   
-            transform.position = Vector2.MoveTowards(myPosition, playerPosition, speed * Time.fixedDeltaTime);
-        }
-
-        
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -97,6 +108,9 @@ public class EnemyController : MonoBehaviour
        if(PlayerController.Elemento == fraqueza)
         {
             currentHealth -= amount;
+            Stun = true;
+
+            // FAZER ANIMAÇÃO DE DANO
         }
     }
 }

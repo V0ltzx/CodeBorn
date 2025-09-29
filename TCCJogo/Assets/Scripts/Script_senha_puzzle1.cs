@@ -13,7 +13,7 @@ public class Script_senha_puzzle1 : MonoBehaviour
     {
         foreach (var trap in traps)
         {
-            trap.disable_trap();
+            
         }
     }
     void Start()

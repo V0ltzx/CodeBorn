@@ -27,7 +27,7 @@ public class room_change : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                GameManager.Instance.position_player = destino;
+                GameManager.Instance.NextDoor = destino;
                 
                 if (ui_code.Senha == Chave && ui_code.UsosSenha == NumChave)
                 {

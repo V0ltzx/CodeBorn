@@ -138,7 +138,15 @@ public class UI_Code : MonoBehaviour
             {
                 foreach (var trap in trapController)
                 {
-                    trap.disable_trap();
+                    trap.disable_trap(false);
+                }
+            }
+
+            if (GameManager.codeArm.Contains("ArmadilhaOn = true;"))
+            {
+                foreach (var trap in trapController)
+                {
+                    trap.disable_trap(true);
                 }
             }
         }

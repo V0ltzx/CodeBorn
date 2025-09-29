@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    
-    
+
+
     // Criação de uma input action que tem como tipo (definido no editor) como value, tendo maior flexibilidade
     public InputAction MoveAction;
     public InputAction Attack;
@@ -16,11 +16,11 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
     Rigidbody2D rb;
     public GameObject attackPrefab;
-    
+
     // Variáveis padrão
     Vector2 move;
     public float speed = 0.1f;
-   
+
     // Timer de invencibilidade
     public float timeInvincible = 1.0f;
     float damageCooldown;
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     // Timer de invencibilidade de cura
     public float timeInvincibleHeal = 2.0f;
     bool isInvincibleHeal;
-    public bool InvinciHeal { get { return isInvincibleHeal; } }   
+    public bool InvinciHeal { get { return isInvincibleHeal; } }
     float damageCooldownHeal;
 
     // Variáveis de ataque
@@ -37,8 +37,7 @@ public class PlayerController : MonoBehaviour
     float attackCooldown;
     bool canAttack;
     static public string Elemento = "";
-
-    // Something
+    
 
 
     void Start()
@@ -49,13 +48,10 @@ public class PlayerController : MonoBehaviour
         Interact.Enable();
         rb = GetComponent<Rigidbody2D>();
 
+        Teleport();
+
         //QualitySettings.vSyncCount = 0;
         //Application.targetFrameRate = 10;
-
-        if (GameManager.Instance.position_player != null)
-        {
-            transform.position = GameManager.Instance.position_player;
-        }
     }
 
     // Update is called once per frame
@@ -96,7 +92,7 @@ public class PlayerController : MonoBehaviour
         if (!canAttack)
         {
             attackCooldown = Mathf.Clamp(attackCooldown - Time.deltaTime, 0, timeAttack);
-         
+
             if (attackCooldown <= 0f) // Se o cooldown de ataque for menor ou igual a 0, o jogador pode atacar novamente
             {
                 canAttack = true;
@@ -110,7 +106,7 @@ public class PlayerController : MonoBehaviour
             Swing(); // Chama a função Swing quando o botão de ataque é pressionado
         }
 
-        if(Interact.triggered)
+        if (Interact.triggered)
         {
             InteractAction(); // Chama a função InteractAction quando o botão de interação é pressionado
         }
@@ -191,19 +187,19 @@ public class PlayerController : MonoBehaviour
         // Instancia a hitbox do ataque a algumas unidades do personagem, dependendo da direção que ele está virado
         // A hitbox do ataque está fora da posição do seu gameobject,
         // então é necessário adicionar um offset para que a hitbox fique na posição correta olhando para a direita, mas não para esquerda que o offset da hitbox esta pendendo
-        if (transform.localScale.x > 0) 
-        { 
+        if (transform.localScale.x > 0)
+        {
             Vector2 spawnOffset = new Vector2(0.187f, 0.1f);
-        
+
             GameObject projectileObject = Instantiate(attackPrefab, hitbox + spawnOffset, Quaternion.identity);
         }
-        if(transform.localScale.x < 0) 
-        { 
-            Vector2 spawnOffset = new Vector2( 0.0f, 0.1f);
-        
-            GameObject projectileObject = Instantiate(attackPrefab, hitbox + spawnOffset, Quaternion.identity); 
+        if (transform.localScale.x < 0)
+        {
+            Vector2 spawnOffset = new Vector2(0.0f, 0.1f);
+
+            GameObject projectileObject = Instantiate(attackPrefab, hitbox + spawnOffset, Quaternion.identity);
         }
-       
+
         if (Elemento == "Fire" || Elemento == "fire")
         {
             anim.SetTrigger("AttackFire");
@@ -220,7 +216,7 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetTrigger("AttackDark");
         }
-        else if(Elemento == "")
+        else if (Elemento == "")
         {
             anim.SetTrigger("Attack");
         }
@@ -243,6 +239,19 @@ public class PlayerController : MonoBehaviour
                 string text = interagivel.text;
                 UIHandler.instance.DisplayDialogue(text);
             }
+        }
+    }
+
+    public void Teleport()
+    {
+        if(!GameManager.Instance.Started)
+        {
+            GameManager.Instance.Started = true;
+            return;
+        }
+        else if (GameManager.Instance.NextDoor != null)
+        {
+            transform.position = GameManager.Instance.NextDoor;
         }
     }
 }

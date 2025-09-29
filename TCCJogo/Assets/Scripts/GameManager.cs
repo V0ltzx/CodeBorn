@@ -22,8 +22,12 @@ public class GameManager : MonoBehaviour
     public string oriArm = "using UnityEngine;\r\n\r\npublic class SwitchArmadilha : MonoBehaviour\r\n{\r\n\tbool ArmadilhaOn;\r\n\tint DistanciaPlayer;\r\n\t\r\n\tvoid Update()\r\n\t{\r\n\t\tif(DistanciaPlayer < 1)\r\n\t\t{\r\n\t\t\tArmadilhaOn = true;\t\r\n\t\t}\r\n\t}\r\n}";
 
     //posição player
+    public Vector2 InitialPosition = new Vector2(-0.5f, -1.4f);
+    public Vector2 NextDoor;
+    public bool Started = false;
 
-    public Vector2 position_player;
+    //Váriaveis das armadilhas
+    public bool EnableTrap = true;
 
 
     private void Awake()
@@ -42,7 +46,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        position_player = new Vector2(-0.5f, -1.7f);
         codePer = oriPer;
         codeCha = oriCha;
         codeArm = oriArm;
@@ -54,18 +57,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Resethealth()
+    public void StartReset()
     {
         currentHealth = maxHealth;
-    }
 
-    public void ResetCode()
-    {
         Elemento = "";
+
         codePer = oriPer;
         codeCha = oriCha;
         codeArm = oriArm;
+
+        EnableTrap = true;
     }
- 
+
 }
 
