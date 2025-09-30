@@ -3,15 +3,13 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class TrapController : MonoBehaviour
 {
-
-    public bool enabletrap = true;
     public bool Parede;
     Animator anim;
     BoxCollider2D cd;
-    void Awake() // é chamado quando o script é carregado
+    void Awake() 
     {
-        anim = GetComponent<Animator>(); // pegar o componente animator
-        anim.SetBool("IsActive", false); // começa como false (traps desativadas)
+        anim = GetComponent<Animator>(); 
+        anim.SetBool("IsActive", false); 
         cd = GetComponent<BoxCollider2D>();
 
         if (Parede)
@@ -19,21 +17,20 @@ public class TrapController : MonoBehaviour
             cd.enabled = false;
         }
     }
- 
-    
 
-    public void disable_trap(bool Ativo)
+    private void Update()
     {
-        GameManager.Instance.EnableTrap = Ativo;
         if (Parede)
         {
             if (!GameManager.Instance.EnableTrap)
             {
                 cd.enabled = true;
+                anim.SetBool("IsActive", false);
             }
             else
             {
                 cd.enabled = false;
+                anim.SetBool("IsActive", true);
             }
         }
         else if (!Parede)
@@ -41,14 +38,14 @@ public class TrapController : MonoBehaviour
             if (!GameManager.Instance.EnableTrap)
             {
                 cd.enabled = false;
+                anim.SetBool("IsActive", false);
             }
             else
             {
                 cd.enabled = true;
+                anim.SetBool("IsActive", true);
             }
         }
-
-        anim.SetBool("IsActive", false);
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -62,28 +59,24 @@ public class TrapController : MonoBehaviour
                 anim.SetBool("IsActive", true);
             }
         }
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (!GameManager.Instance.EnableTrap) return;
-
-        if (other.CompareTag("Player"))
+        if(!Parede)
         {
-            anim.SetBool("IsActive", true); 
+            if (!GameManager.Instance.EnableTrap) return;
+
+            if (other.CompareTag("Player"))
+            {
+                anim.SetBool("IsActive", true);
+            }
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (!enabletrap) return;
+        if (!GameManager.Instance.EnableTrap) return;
 
         if (other.CompareTag("Player"))
         {
             anim.SetBool("IsActive", false); 
         }
     }
-
-
-
 }

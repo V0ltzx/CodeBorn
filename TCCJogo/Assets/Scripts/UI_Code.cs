@@ -7,7 +7,7 @@ public class UI_Code : MonoBehaviour
     bool isActive = false;
     public TMP_InputField inputField;
     public PlayerController playerController;
-    public TrapController[] trapController;
+    //public TrapController[] trapController;
 
 
     // 1 - Personagem, 2 - Chave, 3 - Armadilha 0 - Nenhum
@@ -136,18 +136,12 @@ public class UI_Code : MonoBehaviour
 
             if (GameManager.codeArm.Contains("ArmadilhaOn = false;"))
             {
-                foreach (var trap in trapController)
-                {
-                    trap.disable_trap(false);
-                }
+                GameManager.Instance.EnableTrap = false;
             }
 
             if (GameManager.codeArm.Contains("ArmadilhaOn = true;"))
             {
-                foreach (var trap in trapController)
-                {
-                    trap.disable_trap(true);
-                }
+                GameManager.Instance.EnableTrap = true;
             }
         }
         else

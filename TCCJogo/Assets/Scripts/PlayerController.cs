@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviour
         // criação de uma variavel vector2 para Ler o valor do input de movimento, que é um value e o colocando em um Vector2 (x,y)
         move = MoveAction.ReadValue<Vector2>();
         Elemento = GameManager.Instance.Elemento;
+        GameManager.Instance.PlayerPosition = transform.position;
+
         //Debug.Log(move);
         // Criação de uma variavel Vector2 para guardar a posição atual do objeto (guardado na unity na parte de position do componente transform,
         // e somando o movimento (move) multiplicado pela velocidade (speed)

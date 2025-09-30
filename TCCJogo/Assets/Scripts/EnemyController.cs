@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 
 public class EnemyController : MonoBehaviour
@@ -12,21 +13,22 @@ public class EnemyController : MonoBehaviour
     int direction = 1;
     public int healthMax;
     int currentHealth;
-    public PlayerController player;
+    
     float range = 1.0f;
     float distance; 
     public string fraqueza;
 
+    
 
     private bool Stun = false;
     [SerializeField] float StunTime = 1f;
 
+   
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         Timer = PatrolTime;
         currentHealth = healthMax;
-        player = player.GetComponent<PlayerController>();
     }
 
     void Update()
@@ -58,7 +60,7 @@ public class EnemyController : MonoBehaviour
     void FixedUpdate()
     {
 
-        Vector2 playerPosition = player.transform.position;
+        Vector2 playerPosition = GameManager.Instance.PlayerPosition;
         Vector2 myPosition = transform.position;
 
         // Calcula a distância entre dois vetores
@@ -88,7 +90,7 @@ public class EnemyController : MonoBehaviour
             {
                 // MoveTowards pega a posição atual no primeiro parâmetro, a posição do traget no segundo parâmetro e uma velocidade para o movimento no terceiro parâmetro
                 // É possível adicionar um parâmetro de distancia máxima, que em valores negativos faz o objeto se afastar   
-                transform.position = Vector2.MoveTowards(myPosition, playerPosition, speed * Time.fixedDeltaTime);
+                rb.position = Vector2.MoveTowards(myPosition, playerPosition, speed * Time.fixedDeltaTime);
             }
         }
     }
@@ -105,12 +107,13 @@ public class EnemyController : MonoBehaviour
 
     public void DamageSofrido(int amount)
     {
-       if(PlayerController.Elemento == fraqueza)
+       if(GameManager.Instance.Elemento == fraqueza)
         {
             currentHealth -= amount;
             Stun = true;
 
             // FAZER ANIMAÇÃO DE DANO
+            // Fazer o inimigo alternar a direção com triggers ao inves de tempo
         }
     }
 }

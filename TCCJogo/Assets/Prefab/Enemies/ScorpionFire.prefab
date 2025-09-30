@@ -229,5 +229,5 @@ MonoBehaviour:
   vertical: 0
   PatrolTime: 2
   healthMax: 2
-  player: {fileID: 0}
   fraqueza: water
+  StunTime: 1

@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     //posição player
     public Vector2 InitialPosition = new Vector2(-0.5f, -1.4f);
     public Vector2 NextDoor;
+    public Vector2 PlayerPosition;
     public bool Started = false;
 
     //Váriaveis das armadilhas
