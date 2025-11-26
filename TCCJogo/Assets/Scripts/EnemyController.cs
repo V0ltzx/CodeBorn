@@ -115,10 +115,14 @@ public class EnemyController : MonoBehaviour
         {
             currentHealth -= amount;
             Stun = true;
-            anim.SetTrigger("Hit");
+            if (currentHealth > 1)
+            {
+                anim.SetTrigger("Hit");
+            }
             anim.SetInteger("Health", currentHealth);
             // FAZER ANIMAÇÃO DE DANO
             // Fazer o inimigo alternar a direção com triggers ao inves de tempo
         }
+       
     }
 }

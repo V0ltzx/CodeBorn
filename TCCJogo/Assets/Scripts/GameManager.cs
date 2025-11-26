@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     // Variáveis do Player
     static public int health { get { return currentHealth; } }
     static public int currentHealth;
-    static public int maxHealth = 5;
+    static public int maxHealth = 10;
     public string Elemento = "";
     bool SetHealth = false;
 
