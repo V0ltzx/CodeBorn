@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
 
     public float speed;
     Rigidbody2D rb;
+    Animator anim;
     public bool vertical;
     public float PatrolTime = 2.0f;
     float Timer;
@@ -27,8 +28,10 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         Timer = PatrolTime;
         currentHealth = healthMax;
+        anim.SetInteger("Health", healthMax);
     }
 
     void Update()
@@ -52,7 +55,8 @@ public class EnemyController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            rb.simulated = false;
+            Destroy(gameObject, 1f);
         }
     }
 
@@ -69,7 +73,7 @@ public class EnemyController : MonoBehaviour
         // Declara uma variável Vector2 para armazenar a posição atual do Rigidbody2D do inimigo
         Vector2 position = rb.position;
 
-        if (!Stun)
+        if (!Stun && currentHealth > 0)
         {
             if (distance > range)
             {
@@ -111,7 +115,8 @@ public class EnemyController : MonoBehaviour
         {
             currentHealth -= amount;
             Stun = true;
-
+            anim.SetTrigger("Hit");
+            anim.SetInteger("Health", currentHealth);
             // FAZER ANIMAÇÃO DE DANO
             // Fazer o inimigo alternar a direção com triggers ao inves de tempo
         }

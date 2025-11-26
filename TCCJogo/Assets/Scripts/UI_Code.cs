@@ -35,7 +35,7 @@ public class UI_Code : MonoBehaviour
             Tela_code.SetActive(true);
             isActive = true;
         }
-        if (isActive && Input.GetKeyDown(KeyCode.Escape))
+        else if (isActive && Input.GetKeyDown(KeyCode.Escape))
         {
             Tela_code.SetActive(false);
             isActive = false;

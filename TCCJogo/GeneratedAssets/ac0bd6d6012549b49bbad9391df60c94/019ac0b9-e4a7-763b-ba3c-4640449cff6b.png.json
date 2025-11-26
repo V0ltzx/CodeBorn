@@ -1,0 +1,29 @@
+{
+    "asset": "ac0bd6d6012549b49bbad9391df60c94",
+    "fileName": "019ac0b9-e4a7-763b-ba3c-4640449cff6b.png",
+    "prompt": "",
+    "negativePrompt": "",
+    "model": "",
+    "modelName": "",
+    "customSeed": -1,
+    "w3CTraceId": "5a6d3ba662e2029c99073874c9f28f34",
+    "refinementMode": "Recolor",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": [
+            {
+                "doodleReferenceType": 5,
+                "doodle": [],
+                "label": "Palette",
+                "strength": 1.0,
+                "invertStrength": false,
+                "assetReferenceGuid": "f14a61d857aad0749899a45f81ed03d9"
+            }
+        ]
+    },
+    "upscaleFactor": 0
+}
